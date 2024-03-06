@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  text-align : center;
+}
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
+<title>2024/03/06</title>
+</head>
+<body>
+	<h2>안녕하세요</h2>
+	<a href="https://www.naver.com/ target = "_self">Naver</a> </br>
+	<a href="https://www.google.com/" target = "_blank">Google</a> </br>
+	<a href="https://www.youtube.com/ target = "_parent">YouTube</a> </br>
+
+
+
+<h2>테이블</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Person 1</th>
+    <th>Person 2</th>
+    <th>Person 3</th>
+  </tr>
+  <tr>
+    <td>Emil</td>
+    <td>Tobias</td>
+    <td>Linus</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>14</td>
+    <td>10</td>
+  </tr>
+</table>
+
+<table>
+	<tr><th width = 50px >1</th><th width = 50px >2</th><th width = 50px >3</th></tr>
+	<tr><td>1</td><td>b</td><td rowspan="3">c</td></tr>
+	<tr><td>!</td><td>@</td></tr>
+	<tr><td colspan="2" >z</td></tr>
+</table>
+
+</body>
+</html>
