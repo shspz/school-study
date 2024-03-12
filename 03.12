@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>3월12일 연습</title>
+<style>
+	talbe , tr , td , th {
+	text-align : center;
+   border: 1px solid black;
+	padding : 20px;
+	}
+	</style>
+</head>
+<body>
+
+	<form>
+		<table>
+		<tr><td>아이디</td>
+			<td><input type = "text"></td></tr>
+		<tr><td>비밀번호</td>
+			<td><input type = "password"></td></tr>
+		<tr><td >선택</td>
+			<td><input type = "radio">바나나
+				<input type = "radio">사과
+				<input type = "radio">오렌지</td></tr>
+		<tr><td>선택2</td>
+			<td><input type = "checkbox">짜장면
+				<input type = "checkbox">우동
+				<input type = "checkbox">탕수육</td></tr>
+		<tr><td>목록</td>
+			<td>
+				<select>
+					<option>그랜저
+					<option>소나타
+					<option>제네시스
+					<option>볼보
+				</select>
+			</td>
+		</tr>
+		<tr><td ><input type = "submit"></td>
+			<td><input type = "reset"></td></tr>
+	<!-- <tr><td></td></tr>-->
+		</table>
+	</form>
+
+</body>
+</html>
