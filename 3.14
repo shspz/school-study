@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3월14일</title>
+    <style>
+        table, th , tr {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>표</h1>
+    <table>
+        <caption>우도입도 총괄요금표</caption>
+        <colgroup>
+            <col style="background-color:darkseagreen;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th rowspan="2">구분</th>
+                <th colspan="3" style="background-color:wheat;">우도입도 총괄요금표</th>
+            </tr>
+            <tr>
+                <th>선박요금</th>
+                <th>도립공원입장료</th>
+                <th>터미널이용료</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4" style="background-color: white;">*이륜차(오토바이,자전거) 및 화물차량은 별도 문의</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <th>성인</th>
+                <td>2,000원</td>
+                <td>1,000원</td>
+                <td>500원</td>
+            </tr>
+            <tr>
+                <th>중학생이상</th>
+                <td>2,000원</td>
+                <td>800원</td>
+                <td>300원</td>
+            </tr>
+            <tr>
+                <th>초등학생</th>
+                <td>700원</td>
+                <td>500원</td>
+                <td>300원</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
