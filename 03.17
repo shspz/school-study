@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3월14일</title>
+    <style>
+        table, th , tr , td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>KTX 열차 시간표</caption>
+        <tr>
+            <th >출발</th>
+            <th >도착</th>
+            <th >객실</th>
+            <th >요금</th>
+        </tr>
+        <tr>
+            <td>서울(17:25)</td>
+            <td>부산(20:07)</td>
+            <td>일반실</td>
+            <td>50,800원</td>
+        </tr>
+        <tr>
+            <td>서울(18:00)</td>
+            <td>부산(20:35)</td>
+            <td>특실</td>
+            <td>83,700원</td>
+        </tr>
+        <tr>
+            <td>서울(18:15)</td>
+            <td>부산(20:50)</td>
+            <td>일반실</td>
+            <td>50,800원</td>
+        </tr>
+    </table>
+</body>
+</html>
