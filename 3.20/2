@@ -21,21 +21,24 @@
             width: 100%;
             font-size: 35px;
         }
-        nav{
+
+        nav {
             position: fixed;
             top: 50px;
             background-color: lightblue;
             line-height: 30px;
             width: 100%;
         }
-        section{
+
+        section {
             position: fixed;
             top: 80px;
             background-color: lightgray;
             width: 100%;
             height: 100%;
         }
-        footer{
+
+        footer {
             position: fixed;
             bottom: 0px;
             background-color: blue;
@@ -45,6 +48,7 @@
             width: 100%;
             font-size: 15px;
         }
+
         h2,
         td {
             text-align: center;
@@ -73,6 +77,14 @@
                 </tr>
                 <tr>
                     <td>판매구분</td>
+                    <td><select>
+                            <option value="">선택</option>
+                            <option value="1">판매</option>
+                            <option value="2">판매취소</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>판매점포</td>
                     <td><select>
                             <option value="">선택</option>
                             <option value="A001">이태원점</option>
