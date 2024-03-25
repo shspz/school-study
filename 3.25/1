@@ -6,7 +6,7 @@
     <title>Document</title>
         <script>
         function aaa(){
-            if(document.form.text.value.length==0){
+            if(document.frm.txt1.value.length==0){
                 alert("회원번호가 입력되지 않았습니다.")
             }
         }
