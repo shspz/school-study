@@ -6,7 +6,6 @@
     <title>Document</title>
         <script>
         function aaa(){
-            alert("javascript")
             if(document.form.text.value.length==0){
                 alert("회원번호가 입력되지 않았습니다.")
             }
@@ -15,11 +14,11 @@
 </head>
 <body>
         <h2>홈쇼핑 회원 등록</h2>
-        <form>
+        <form name="frm">
             <table border="1">
                 <tr>
                     <td>회원번호</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" name="txt1"></td>
                 </tr>
                 <tr>
                     <td>회원성명</td>
