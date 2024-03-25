@@ -9,6 +9,9 @@
             if(document.frm.txt1.value.length==0){
                 alert("회원번호가 입력되지 않았습니다.")
             }
+            if(document.frm.txt2.value.length==0){
+                alert("회원성명이 입력되지 않았습니다.")
+            }
         }
     </script>
 </head>
@@ -22,27 +25,27 @@
                 </tr>
                 <tr>
                     <td>회원성명</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" name="txt2"></td>
                 </tr>
                 <tr>
                     <td>회원전화</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" name="txt3"></td>
                 </tr>
                 <tr>
                     <td>회원주소</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" name="txt4"></td>
                 </tr>
                 <tr>
                     <td>가입일짜</td>
-                    <td><input type="date"></td>
+                    <td><input type="date" name="dt"></td>
                 </tr>
                 <tr>
                     <td>고객등급<br>[A:VIP,B:일반,C:직원]</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" name="txt5"></td>
                 </tr>
                 <tr>
                     <td>도시코드</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" name="txt6"></td>
                 </tr>
                 <tr>
                     <td colspan="2">
