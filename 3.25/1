@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+        <script>
+        function aaa(){
+            alert("javascript")
+            if(document.form.text.value.length==0){
+                alert("회원번호가 입력되지 않았습니다.")
+            }
+        }
+    </script>
 </head>
 <body>
         <h2>홈쇼핑 회원 등록</h2>
@@ -39,7 +47,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" value="등록">
+                        <input type="submit" value="등록" onclick = "return aaa()">
                         <input type="reset" value="조회">
                     </td>
                 </tr>
