@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        table {
+            margin: auto;
+        }
+
+        header {
+            position: fixed;
+            top: 0px;
+            background-color: blue;
+            color: white;
+            line-height: 50px;
+            text-align: center;
+            width: 100%;
+            font-size: 35px;
+        }
+
+        nav {
+            position: fixed;
+            top: 50px;
+            background-color: lightblue;
+            line-height: 30px;
+            width: 100%;
+        }
+
+        section {
+            position: fixed;
+            top: 80px;
+            background-color: lightgray;
+            width: 100%;
+            height: 100%;
+        }
+
+        div {
+            padding-bottom: 50px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0px;
+            background-color: blue;
+            color: white;
+            line-height: 25px;
+            text-align: center;
+            width: 100%;
+            font-size: 15px;
+        }
+
+        h2,
+        td {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        function aaa() {
+            if (document.frm.saleno.value.length == "") {
+                alert("판매번호가 입력되지 않았습니다.");
+                frm.saleno.focus();
+                return false;
+            }
+            if(document.frm.coffe.value.length==""){
+                alert("상품코드가 선택되지 않았습니다.");
+                return false;
+            }
+            if(document.frm.day.value.length==""){
+                alert("판매날짜가 입력되지 않았습니다.");
+                frm.day.focus();
+                return false;
+            }
+            if (document.frm.code[0].checked == false &&
+                document.frm.code[1].checked == false &&
+                document.frm.code[2].checked == false &&
+                document.frm.code[3].checked == false &&
+                document.frm.code[4].checked == false) {
+                alert("매장코드를 선택하지 않았습니다.");
+                return false;
+            }
+            if (document.frm.tnfid.value.length == "") {
+                alert("판매수량이 입력되지 않았습니다.");
+                return false;
+            }
+            alert("정삭적으로 매장별 판매등록이 완료되었습니다.");
+            return true;
+        }
+        function bbb() {
+            alert("모든 데이터를 삭제하고 처음부터 다시 입력합니다!");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <header>매장별 커피 판매관리</header>
+    <nav>
+        <a href="vksao.html">판매등록</a>
+        <a href="#">판매현황</a>
+        <a href="#">매장별 판매액</a>
+        <a href="#">상품별 판매액</a>
+        <a href="index.html">홈으로</a>
+    </nav>
+    <section>
+        <h2><b>판매 등록</b></h2>
+        <form name="frm">
+            <table border="1px solid black">
+                <tr>
+                    <td>비번호</td>
+                    <td><input type="number" name="saleno"></td>
+                </tr>
+                <tr>
+                    <td>상품코드</td>
+                    <td><select name="coffe">
+                            <option value="">상품선택</option>
+                            <option value="001">아메리카노</option>
+                            <option value="002">에스프레소</option>
+                            <option value="003">카페라떼</option>
+                            <option value="004">카라멜마끼</option>
+                            <option value="005">카푸치노</option>
+                            <option value="006">초코롤케익</option>
+                            <option value="007">녹차롤케익</option>
+                            <option value="008">망고쥬스</option>
+                            <option value="009">핫초코</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>판매날짜</td>
+                    <td><input type="text" name="day"></td>
+                </tr>
+                <tr>
+                    <td>매장코드</td>
+                    <td><input type="radio" name="code">S001
+                        <input type="radio" name="code">S002
+                        <input type="radio" name="code">S003
+                        <br>
+                        <input type="radio" name="code">S004
+                        <input type="radio" name="code">S005
+                        <input type="radio" name="code">S006
+                    </td>
+                </tr>
+                <tr>
+                    <td>판매수량</td>
+                    <td><input type="text" name="tnfid"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="등록" onclick="return aaa();">
+                        <input type="reset" value="다시쓰기" onclick="return bbb();">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </section>
+    <footer>Copyright @ 2024 All right reserved KwangWoon AI High School.</footer>
+</body>
+
+</html>
