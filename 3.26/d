@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d</title>
+    <style>
+        nav {
+            position: relative;
+            background-color: rgb(161, 220, 240);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        a {
+            border: 1px solid black;
+            border-radius: 10rem;
+            padding: 2rem;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        function aaa(){
+            if(document.frm.fruit.value.length==""){
+                alert("과일을 선택하세요");
+            }
+        }
+        function rs(){
+            alert("셀럭트 초기화면")
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <nav>
+        <a href="a.html">a</a>
+        <a href="b.html">b</a>
+        <a href="c.html">c</a>
+        <a href="d.html">d</a>
+    </nav>
+    <form name="frm">
+        <table border="1">
+            <tr>
+                <td>
+                    <select name="fruit">
+                        <option value="">과일선택
+                        <option value="사과">사과
+                        <option value="바나나">바나나
+                        <option value="딸기">딸기
+                        <option value="복숭아">복숭아
+                        <option value="Grape">Grape
+                    </select>
+                </td>
+            </tr>
+            <tr><td colspan="2">
+                <input type="submit" onclick="aaa()">
+                <input type="reset" onclick="return rs()">
+            </td></tr>
+        </table>
+    </form>
+</body>
+
+</html>
