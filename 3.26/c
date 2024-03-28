@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>c</title>
+    <style>
+        nav {
+            position: relative;
+            background-color: rgb(161, 220, 240);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        a {
+            border: 1px solid black;
+            border-radius: 10rem;
+            padding: 2rem;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        function aaa() {
+            if (document.frm.ch[0].checked == false &&
+                document.frm.ch[1].checked == false &&
+                document.frm.ch[2].checked == false &&
+                document.frm.ch[3].checked == false &&
+                document.frm.ch[4].checked == false) {
+                alert("체크해주세요");
+            }
+        }
+        function rs() {
+            alert("초기화");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <nav>
+        <a href="a.html">a</a>
+        <a href="b.html">b</a>
+        <a href="c.html">c</a>
+        <a href="d.html">d</a>
+    </nav>
+    <form name="frm">
+        <table border="1">
+            <tr>
+                <td>강좌과목:</td>
+                <td>
+                    <input type="checkbox" name="ch">HTML
+                    <input type="checkbox" name="ch">CSS
+                    <br>
+                    <input type="checkbox" name="ch">HTML
+                    <input type="checkbox" name="ch">Java
+                    <br>
+                    <input type="checkbox" name="ch">C++
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" onclick="aaa();">
+                    <input type="reset" onclick="return rs;">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
