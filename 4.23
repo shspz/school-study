@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+ body, table{margin:auto;}
+ 
+ header {
+ position: fixed; top: 0px;
+ background-color: blue; color : white;
+ line-height : 50px; text-align: center;
+ width: 100%; font-size: 35px;}
+ 
+ nav{
+ position: fixed; top: 50px;
+ background-color: lightblue;
+ line-height: 30px;
+ width: 100%;}
+ 
+ section{
+ position: fixed; top: 80px;
+ background-color: lightgray;
+ width: 100%; height: 100%;}
+ 
+ footer{
+ position: fixed; bottom: 0px;
+ background-color: blue; color: white;
+ line-height: 25px; text-align: center;
+ width: 100%; font-size: 15px;}
+ 
+ h2,td{ text-align : center;}
+ 
+ a{text-decoration : none;}
+</style>
+</head>
+<body>
+<header>학생 성적 조회 프로그램 ver 1.0</header>
+	<nav>
+	<a href = "m1.jsp" style = "text-decoration : none">학생조회</a>
+	<a href = "m2.jsp" style = "text-decoration : none">학생성적입력</a>
+	<a href = "m3.jsp" style = "text-decoration : none">학생성적조회</a>
+	<a href = "index.jsp">홈으로</a>
+	</nav>
+	<section>
+	<h2>학생성적 관리 프로그램</h2>
+학생과 학생 성적에 관한 데이터베이스를 구축하고 관리하기 위한
+프로그램이다.</br>1. 학생정보 및 학생성적 테이블을 생성하고 샘플데이터를 추가한다.</br>
+2. 학생조회, 학생성적 입력, 학생성적 조회 프로그램을 작성한다.</br>3. 올바르게 구현되었는지 확인한다. 
+	</section>
+	<footer>
+	<b style = "font-size : 15px; text-align : center;">
+	Copyright@2023 ALL right reserved KwangWoon AI High School
+	</b>
+	</footer>
+</body>
+</html>
