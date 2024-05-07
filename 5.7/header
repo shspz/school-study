@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<header>학생 성적 조회 프로그램 ver 1.0</header>
+	<nav>
+	<a href = "m1.jsp" style = "text-decoration : none">학생조회</a> &nbsp;&nbsp;
+	<a href = "m2.jsp" style = "text-decoration : none">학생성적입력</a> &nbsp;&nbsp;
+	<a href = "m3.jsp" style = "text-decoration : none">학생성적조회</a> &nbsp;&nbsp;&nbsp;&nbsp;
+	<a href = "index.jsp">홈으로</a>
+	</nav>
+</body>
+</html>
