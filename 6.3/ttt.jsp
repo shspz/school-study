@@ -31,6 +31,7 @@
 		String sql = "insert all into kw03_member2 values('" + a1 + "','" + a2 + "','" + a3 + "')into kw03_score2 values('"
 		+ a1 + "'," + a4 + "," + a5 + "," + a6 + "," + a7 + ")select *from dual";
 		// ResultSet rs = stmt.executeQuery(sql);
+		response.sendRedirect("m1.jsp");
 		stmt.executeUpdate(sql);
 	} catch (Exception e) {
 		e.printStackTrace();
