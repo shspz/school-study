@@ -1,0 +1,32 @@
+CREATE TABLE kw09_goods(
+    goods_cd number(6) not null,
+    goods_nm varchar2(30),
+    goods_price number(8),
+    cost number(8),
+    in_date date,
+    primary key(goods_cd));
+    
+insert into kw09_goods values(110001,'라면', 1050, 750, date'2022-03-02');
+    
+CREATE TABLE kw09_store(
+    store_cd varchar2(5) not null,
+    store_nm varchar2(20),
+    store_fg varchar2(1),
+    primary key(store_cd));
+    
+insert into kw09_store values('E001', '이태원점', '0');
+    
+create table kw09_sale(
+    sale_no varchar2(4) not null,
+    sale_ymd date not null,
+    sale_fg varchar2(1) not null,
+    store_cd varchar2(5), 
+    goods_cd number(6),
+    sale_cnt number(3),
+    pay_type varchar2(2),
+    primary key(sale_no),
+    FOREIGN KEY (store_cd) REFERENCES kw09_store,
+    FOREIGN KEY (goods_cd) REFERENCES kw09_goods);
+
+insert into kw09_sale values('0001', date'2022-03-25', '1', 'A001', 110001, 2, '02');
+    
