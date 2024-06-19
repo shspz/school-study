@@ -1,0 +1,4 @@
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6
+
+ojdbc6 ->
+src > main > webapp > WEB-INF > lib 안에 삽입
