@@ -1,32 +1,50 @@
-CREATE TABLE kw09_goods(
-    goods_cd number(6) not null,
-    goods_nm varchar2(30),
-    goods_price number(8),
-    cost number(8),
-    in_date date,
-    primary key(goods_cd));
-    
-insert into kw09_goods values(110001,'라면', 1050, 750, date'2022-03-02');
-    
-CREATE TABLE kw09_store(
-    store_cd varchar2(5) not null,
-    store_nm varchar2(20),
-    store_fg varchar2(1),
-    primary key(store_cd));
-    
-insert into kw09_store values('E001', '이태원점', '0');
-    
-create table kw09_sale(
-    sale_no varchar2(4) not null,
-    sale_ymd date not null,
-    sale_fg varchar2(1) not null,
-    store_cd varchar2(5), 
-    goods_cd number(6),
-    sale_cnt number(3),
-    pay_type varchar2(2),
-    primary key(sale_no),
-    FOREIGN KEY (store_cd) REFERENCES kw09_store,
-    FOREIGN KEY (goods_cd) REFERENCES kw09_goods);
+create table kw09_goods(
+goods_cd number(6) not null,
+goods_nm VARCHAR2(30),
+goods_price number(8),
+cost number(8),
+in_date date,
+PRIMARY KEY (goods_cd));
 
-insert into kw09_sale values('0001', date'2022-03-25', '1', 'A001', 110001, 2, '02');
-    
+create table kw09_store(
+store_cd VARCHAR2(5) not null,
+store_nm VARCHAR2(30),
+store_fg VARCHAR2(1),
+PRIMARY KEY (store_cd));
+
+INSERT INTO kw09_store VALUES('A001','이태원점','0');
+INSERT INTO kw09_store VALUES('A002','한남점','0');
+INSERT INTO kw09_store VALUES('A003','도원점','0');
+INSERT INTO kw09_store VALUES('B001','혜화점','1');
+INSERT INTO kw09_store VALUES('C001','방배점','1');
+INSERT INTO kw09_store VALUES('D001','사당점','0');
+INSERT INTO kw09_store VALUES('D002','흑석점','1');
+INSERT INTO kw09_store VALUES('E001','금호점','0');
+
+
+create table kw09_sale(
+sale_no VARCHAR2(4) not null,
+sale_ymd date not null,
+sale_fg VARCHAR2(1) not null,
+store_cd VARCHAR2(5),
+goods_cd number(6),
+sale_cnt number(3),
+pay_type varchar2(2),
+PRIMARY KEY (sale_no),
+foreign key(store_cd) REFERENCES kw09_store,
+FOREIGN key(goods_cd) REFERENCES kw09_goods);
+
+insert into kw09_sale values('0001',date'2022-03-25','1','A001',110001,2,'02');
+insert into kw09_sale values('0002',date'2022-03-25','1','B001',110003,2,'02');
+insert into kw09_sale values('0003',date'2022-03-25','1','D001',110003,1,'01');
+insert into kw09_sale values('0004',date'2022-03-25','1','A001',110006,5,'02');
+insert into kw09_sale values('0005',date'2022-03-25','1','C001',110003,2,'02');
+insert into kw09_sale values('0006',date'2022-03-25','2','C001',110003,2,'02');
+insert into kw09_sale values('0007',date'2022-03-25','1','A002',110005,4,'02');
+insert into kw09_sale values('0008',date'2022-03-25','1','A003',110004,4,'02');
+insert into kw09_sale values('0009',date'2022-03-25','1','B001',110001,2,'01');
+insert into kw09_sale values('0010',date'2022-03-25','1','A002',110006,1,'02');
+
+
+
+select goods_cd, goods_nm, to_char(goods_price,'9,999'), to_char(cost,'9,999'), to_char(in_date,'YYYY-MM-DD') from kw09_goods;
