@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css" >
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2>투표하기</h2>
+<form>
+<table border = 1>
+<tr>
+	<td>주민번호</td>
+	<td><input type="text">)ex890615315726</td>
+</tr>
+<tr>
+	<td>성명</td>
+	<td><input type="text"></td>
+</tr>
+<tr>
+	<td>후보번호</td>
+	<td><input type="text"></td>
+</tr>
+<tr>
+	<td>투표시간</td>
+	<td><input type="text"></td>
+</tr>
+<tr>
+	<td>투표장소</td>
+	<td><input type="text"></td>
+</tr>
+<tr>
+	<td>유권자확인</td>
+	<td><input type="text"></td>
+</tr>
+<tr>
+	<td colspan=2>
+	<input type="submit" value="투표하기">
+	<input type="reset" value="다시하기"></td>
+</tr>
+</table>
+</form>
+</section>
+</body>
+<jsp:include page="footer.jsp"></jsp:include>
+</html>
