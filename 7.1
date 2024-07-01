@@ -1,50 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="style.css" >
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>header</title>
+<script type="text/javascript">
+function aaa(){
+	if(document.frm.jumin.value.length==0 || 
+			document.frm.jumin.value.length != 13){
+		alert("주민번호를 입력하세요!");
+		frm.jumin.focus();
+		return false;
+	}
+	if(document.frm.name.value.length==0){
+		alert("이름을 입력하세요!");
+		frm.name.focus();
+		return false;
+	}
+	if(document.frm.m_no.value.length==0){
+		alert("후보번호를 선택하세요!");
+		frm.m_no.focus();
+		return false;
+	}
+	if(document.frm.date.value.length==0){
+		alert("투표시간을 입력하세요!");
+		frm.date.focus();
+		return false;	
+	}
+	if(document.frm.place.value.length==0){
+		alert("투표장소를 입력하세요!");
+		frm.place.focus();
+		return false;	
+	}
+	if(document.frm.check[0].checked==false &&
+			document.frm.check[1].checked==false){
+		alert("유권자확인을 입력하세요!");
+		return false;	
+	}
+	alert("투표하기 정보가 정상적으로 등록되었습니다.")
+	return true;
+}
+</script>
+
+<link href="style.css" rel="stylesheet">
+
 </head>
+
 <body>
+
 <jsp:include page="header.jsp"></jsp:include>
+
 <section>
+
 <h2>투표하기</h2>
-<form>
+
+<form name = "frm" action="ttt.jsp">
 <table border = 1>
-<tr>
-	<td>주민번호</td>
-	<td><input type="text">)ex890615315726</td>
-</tr>
-<tr>
-	<td>성명</td>
-	<td><input type="text"></td>
-</tr>
-<tr>
-	<td>후보번호</td>
-	<td><input type="text"></td>
-</tr>
-<tr>
-	<td>투표시간</td>
-	<td><input type="text"></td>
-</tr>
-<tr>
-	<td>투표장소</td>
-	<td><input type="text"></td>
-</tr>
-<tr>
-	<td>유권자확인</td>
-	<td><input type="text"></td>
-</tr>
-<tr>
-	<td colspan=2>
-	<input type="submit" value="투표하기">
-	<input type="reset" value="다시하기"></td>
-</tr>
+<tr><td>주민번호</td>
+	<td style = "text-align : left"><input type="text" name="jumin">ex)890615315726<br></td></tr>
+<tr><td>성명</td>
+	<td style = "text-align : left"><input type="text" name="name"><br></td></tr>
+<tr><td>후보번호</td>
+	<td style = "text-align : left"><select name="m_no" style = "width:150px;">
+	<option value = "후보명단">후보명단</option>
+	<option value = "1">1. 김후보</option>
+	<option value = "2">2. 이후보</option>
+	<option value = "3">3. 박후보</option>
+	<option value = "4">4. 조후보</option>
+	<option value = "5">5. 최후보</option>
+	</select><br></td></tr>
+<tr><td>투표시간</td>
+	<td style = "text-align : left"><input type="text" name="date"><br></td></tr>
+<tr><td>투표장소</td>
+	<td style = "text-align : left"><input type="text" name="place"><br></td></tr>
+<tr><td>유권자확인</td>
+	<td style = "text-align : left"><input type="radio" name="check" value = "Y">확인
+	<input type="radio" name="check" value = "N">미확인<br></td></tr>
+<tr><td colspan = '2'><input type="submit" value = "투표하기" onclick="return aaa();">
+	<input type="submit" value = "다시하기" onclick="return bbb();"></td></tr>
+	
 </table>
 </form>
+
 </section>
-</body>
+
 <jsp:include page="footer.jsp"></jsp:include>
+</body>
 </html>
