@@ -1,0 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="style.css" rel = "stylesheet">
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<table border=1>
+<tr><td>성명</td><td>생년월일</td><td>나이</td>
+<td>성별</td><td>후보번호</td><td>투표시간</td><td>유권자확인</td></tr>
+
+<%
+try{
+   Class.forName("oracle.jdbc.OracleDriver");
+   Connection con=DriverManager.getConnection
+           ("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
+   Statement stmt=con.createStatement();
+   String sql= " SELECT "+
+		       " v_name  성명, "+
+			   " TO_CHAR(TO_DATE('19' || SUBSTR(v_jimin, 1, 6), 'YYYYMMDD'), 'YYYY\"년\"MM\"월\"DD\"일\"') 생년월일, "+
+			   " 2024-(1900+TO_NUMBER(substr(v_jimin,1,2), '9,999')) 나이, "+
+			   " case substr(v_jimin,7,1) "+
+			   " when '1' then '남' "+
+			   " when '2' then '여' "+
+			   " end 성별, "+
+			   " m_no 후보번호, "+
+			   " SUBSTR(v_time, 1, 2) || ':' || SUBSTR(v_time, 3, 2)  투표시간, "+
+			   " case "+
+			   " when v_confirm = 'Y' then '확인' "+
+			   " when v_confirm = 'N' then '미확인' "+
+			   " end 유권자확인 "+
+			   " FROM "+
+		       " kw04_vote4 "+
+			   " where v_area = '제1투표장' ";
+   ResultSet rs=stmt.executeQuery(sql);
+   while(rs.next()){
+       out.print("<tr>");
+       out.print("<td>"+rs.getString("성명")+"</td>");
+       out.print("<td>"+rs.getString("생년월일")+"</td>");
+       out.print("<td>만"+rs.getString("나이")+"세</td>");
+       out.print("<td>"+rs.getString("성별")+"</td>");
+       out.print("<td>"+rs.getString("후보번호")+"</td>");
+       out.print("<td>"+rs.getString("투표시간")+"</td>");    
+       out.print("<td>"+rs.getString("유권자확인")+"</td>");
+       out.print("</tr>");
+   }
+}catch(Exception e){
+   e.printStackTrace();
+}
+%>
+</table>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
