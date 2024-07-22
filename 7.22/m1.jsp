@@ -36,7 +36,7 @@ function aaa(){
    return true;
 
 }
-function bbb(){    window.location="list.jsp"; }
+function bbb(){    window.location="m2.jsp"; }
 
 </script>
 </head>
@@ -81,7 +81,7 @@ try{
 	<td><input type="text" name="city"></td></tr>
 <tr><td colspan="2">
 		<input type="submit" value="등록" onclick="return aaa()">
-		<input type="button" value="조회" onclick="return search()"></td></tr>
+		<input type="button" value="조회" onclick="return bbb()"></td></tr>
 		
 </table>
 </form>
