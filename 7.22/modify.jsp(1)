@@ -43,9 +43,33 @@ catch(Exception e){
 	e.printStackTrace();
 }
 %>
+<tr><td>회원번호</td>
+	<td><input type="text" name="custno" value="<%= mod_custno %>"></td></tr>
+<tr><td>회원성명</td>
+	<td><input type="text" name="custname" value="<%=custname %>"></td></tr>
+<tr><td>회원전화</td>
+	<td><input type="text" name="phone" value="<%=phone %>"></td></tr>
+<tr><td>회원주소</td>
+	<td><input type="text" name="address" value="<%=address %>"></td></tr>
+<tr><td>회원일자</td>
+	<td><input type="text" name="joindate" value="<%=joindate %>"></td></tr>
+<tr><td>고객등급[A:VIP,B:일반,C:직원]</td>
+	<td><input type="text" name="grade" value="<%=grade %>"></td></tr>
+<tr><td>도시코드</td>
+	<td><input type="text" name="city" value="<%=city %>"></td></tr>
+<tr><td colspan="2">
+		<input type="submit" value="수정" onclick="return aaa()">
+		<input type="button" value="조회" onclick="return search()"></td></tr>
+</table>
+</form>
 </section>
 <jsp:include page="footer.jsp"></jsp:include>
 </table>
 </form>
 </body>
 </html>
+
+
+
+
+
