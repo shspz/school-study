@@ -1,5 +1,3 @@
-<%@page import="java.text.*"%>
-<%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,3 +11,41 @@
 <jsp:include page="header.jsp"></jsp:include>
 <section>
 <h2><b>홈쇼핑 회원 정보 수정</b></h2><br>
+<form method = "post" action="update.jsp">
+<table border = "1">
+<%
+String mod_custno=request.getParameter("mod_custno");
+String custname="";
+String phone= "";
+String address="";
+String joindate="";
+String grade="";
+String city="";
+String joindateStr=""; //날짜를 String으로 변경
+try{
+	Class.forName("oracle.jdbc.OracleDriver");
+	Connection con=DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
+	Statement stmt=con.createStatement();
+	String sql="select custno,custname,phone,address, "+
+		"to_char(joindate,'YYYY-MM-DD')aaa, "+
+		"grade,city from member_tbl_02 where custno = " + mod_custno;
+	ResultSet rs=stmt.executeQuery(sql);
+	rs.next();
+	mod_custno=rs.getString("custno");
+	custname=rs.getString("custname");
+	phone = rs.getString("phone");
+	address = rs.getString("address");
+	joindate=rs.getString("aaa");
+	grade = rs.getString("grade");
+	city = rs.getString("city");
+}
+catch(Exception e){
+	e.printStackTrace();
+}
+%>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</table>
+</form>
+</body>
+</html>
