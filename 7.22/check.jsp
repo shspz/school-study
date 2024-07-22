@@ -2,27 +2,27 @@
 function aaa(){
 	if(document.frm.custanme.value.legth==0){
 		alert("회원 성명이 입력되지 않았습니다.");
-		frm.custname.foucs(); return false
+		frm.custname.focus(); return false
 	}
 	if(document.frm.phone.value.legth==0){
 		alert("회원 전화가 입력되지 않았습니다.");
-		frm.phone.foucs(); return false
+		frm.phone.focus(); return false
 	}
 	if(document.frm.address.value.legth==0){
 		alert("회원 주소가 입력되지 않았습니다.");
-		frm.address.foucs(); return false
+		frm.address.focus(); return false
 	}
 	if(document.frm.joindate.value.legth==0){
 		alert("가입 일자가 입력되지 않았습니다.");
-		frm.joindate.foucs(); return false
+		frm.joindate.focus(); return false
 	}
 	if(document.frm.grade.value.legth==0){
 		alert("고객 등급이 입력되지 않았습니다.");
-		frm.grade.foucs(); return false
+		frm.grade.focus(); return false
 	}
 	if(document.frm.city.value.legth==0){
 		alert("도시 코드가 입력되지 않았습니다.");
-		frm.city.foucs(); return false
+		frm.city.focus(); return false
 	}
 	bbb();
 	return true;
