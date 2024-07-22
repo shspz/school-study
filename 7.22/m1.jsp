@@ -51,7 +51,7 @@ try{
 			
 	("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
 	Statement stmt=con.createStatement();
-	String sql="select max(custno)+1 custno from ai01_member";
+	String sql="select max(custno)+1 custno from member_tbl_02";
 	ResultSet rs=stmt.executeQuery(sql);
 	rs.next();
 	custno=rs.getString("custno");
