@@ -1,0 +1,29 @@
+create table TBL_GOODS_01( 
+goods_cd number(6) not null,
+goods_nm varchar2(30),
+goods_price number(8),
+cost number(8),
+in_date date,
+primary key(goods_cd));
+
+create table TBL_STORE_003( 
+store_cd varchar2(5) not null ,
+store_nm varchar2(20),
+store_fg varchar2(1),
+primary key(store_cd)); 
+
+
+
+
+create table TBL_SALE_003(
+sale_no varchar2(4) not null,
+sale_ymd date not null,
+sale_fg varchar2(1) not null,
+store_cd varchar2(5),  
+goods_cd number(6),
+sale_cnt number(3),
+pay_type varchar2(2),
+primary key(sale_no, sale_ymd,sale_fg),
+foreign key(store_cd) references TBL_STORE_003,
+foreign key(goods_cd) references TBL_GOODS_01
+);
