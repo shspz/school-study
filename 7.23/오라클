@@ -27,3 +27,11 @@ primary key(sale_no, sale_ymd,sale_fg),
 foreign key(store_cd) references TBL_STORE_003,
 foreign key(goods_cd) references TBL_GOODS_01
 );
+
+insert into TBL_GOODS_01 values(110001,'라면',1050 ,750,'20220302');
+insert into TBL_GOODS_01 values(110002,'빵',1300,800,'20220302');
+insert into TBL_GOODS_01 values(110003,'과자',2000 ,1700 , '20220302');
+insert into TBL_GOODS_01 values(110004,'탄산음료',900 ,750 , '20220302');
+insert into TBL_GOODS_01 values(110005,'삼각김밥',750,300 , '20220302');
+insert into TBL_GOODS_01 values(110006, '초콜릿',1500 ,1300 , '20220302');
+insert into TBL_GOODS_01 values(110007, '우유',850 ,600 ,'20220302');
