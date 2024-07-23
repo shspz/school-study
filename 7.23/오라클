@@ -44,3 +44,14 @@ insert into TBL_STORE_003 values('C001', '방배점', '1');
 insert into TBL_STORE_003 values('D002', '사당점 ', '0');
 insert into TBL_STORE_003 values('D001', '흑석점 ', '1');
 insert into TBL_STORE_003 values('E001','금호점','0');
+
+insert into TBL_SALE_003 values('0001', '20220325','1','A001',110001,2,'02');
+insert into TBL_SALE_003 values('0002','20220325','1','B001',110003,2,'02');
+insert into TBL_SALE_003 values('0003','20220325','1','D001', 110003,1,'01');
+insert into TBL_SALE_003 values('0004','20220325','1','A001', 110006,5,'02');
+insert into TBL_SALE_003 values('0005','20220325','1','C001', 110003,2,'02');
+insert into TBL_SALE_003 values('0006','20220325','2','C001', 110003,2,'02');
+insert into TBL_SALE_003 values('0007','20220325','1','A002', 110005,4,'02');
+insert into TBL_SALE_003 values('0008','20220325','1','A003', 110004,4,'02');
+insert into TBL_SALE_003 values('0009','20220325','1','B001', 110001,2,'01');
+insert into TBL_SALE_003 values('0010','20220325','1','A002', 110006,1,'02'); 
