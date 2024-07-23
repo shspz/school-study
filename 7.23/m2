@@ -1,0 +1,56 @@
+<%@ page import="java.text.DecimalFormat" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import='java.sql.*'%>
+<!DOCTYPE html> 
+<html> 
+<head>
+<meta charset="UTF-8">
+<title>상품관리</title>
+<script type="text/javascript">
+function fff(){
+	location.href="action_m2.jsp";
+}
+</script>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2>상품관리</h2>
+<form>
+<table border = 1>
+<tr>
+<th>상품코드</th>
+<th>상품명</th>
+<th>단가</th>
+<th>원가</th>
+<th>입고일자</th>
+</tr>
+<%
+	String gc="";
+	DecimalFormat df = new DecimalFormat("###,##0");
+		Class.forName("oracle.jdbc.OracleDriver");
+		Connection con = DriverManager.getConnection
+				("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
+		Statement stmt = con.createStatement();
+		String sql = "select * from tbl_goods_01";
+		ResultSet rs = stmt.executeQuery(sql);
+		while(rs.next()){
+			gc = rs.getString("goods_cd");
+			out.print("<tr>");
+			out.print("<td><a href = 'm2_update.jsp?goods_cd="+gc+"'>"+gc+"</a></td>");
+			out.print("<td>" + rs.getString("goods_nm") + "</td>");
+			out.print("<td style = 'text-align : right'>&#8361;" + df.format(rs.getInt("goods_price")) + "</td>");
+			out.print("<td style = 'text-align : right'>&#8361;" + df.format(rs.getInt("cost")) + "</td>");
+			out.print("<td>" + rs.getString("in_date").substring(0,11) + "</td>");
+			out.print("</tr>");
+		}
+		out.print("<tr><td colspan = '5'><button type = 'button' onclick = 'fff();'>등록</button></td></tr>");
+		
+%>
+</table>
+</form>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
