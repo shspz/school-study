@@ -43,7 +43,7 @@
 			}
 			function bbb(){
 				alert("매출정보를 조회합니다.");
-				window.location="list.jsp";
+				window.location="m3	.jsp";
 			}
 		</script>
 		
