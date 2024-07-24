@@ -1,0 +1,52 @@
+create table kw_product_2022(
+    pcode varchar2(10) primary key,
+    name varchar2(20),
+    cost number(10)
+    ); 
+
+insert into kw_product_2022 values('AA01', '아메리카노', 3000);
+insert into kw_product_2022 values('AA02', '에스프레소', 3500);
+insert into kw_product_2022 values('AA03', '카페라떼', 4000);
+insert into kw_product_2022 values('AA04', '카라멜마끼', 4500);
+insert into kw_product_2022 values('AA05', '카푸치노', 5000);
+insert into kw_product_2022 values('AA06', '초코롤케익', 6000);
+insert into kw_product_2022 values('AA07', '녹차롤케익', 6500);
+insert into kw_product_2022 values('AA08', '망고쥬스', 7000);
+insert into kw_product_2022 values('AA09', '핫초코', 2500);
+
+create table kw_shop_2022(
+    scode varchar2(10) primary key,
+    sname varchar2(20)
+    );
+    
+
+insert into kw_shop_2022 values('SS01', '강남점');    
+insert into kw_shop_2022 values('SS02', '강서점');
+insert into kw_shop_2022 values('SS03', '강동점');
+insert into kw_shop_2022 values('SS04', '강북점');
+insert into kw_shop_2022 values('SS05', '동대문점');
+insert into kw_shop_2022 values('SS06', '인천점');
+
+create table kw_salelist_2022(
+    saleno number(10) primary key,
+    pcode varchar2(10) not null,
+    saledate date,
+    scode varchar2(10) not null,
+    amount number(10)
+    );
+    
+insert into kw_salelist_2022 values(100001, 'AA01',date'2018-09-02', 'SS01', 50);
+insert into kw_salelist_2022 values(100002, 'AA03',date'2018-09-02', 'SS02', 40);
+insert into kw_salelist_2022 values(100003, 'AA04',date'2018-09-02', 'SS02', 20);
+insert into kw_salelist_2022 values(100004, 'AA04',date'2018-09-02', 'SS01', 30);
+insert into kw_salelist_2022 values(100005, 'AA05',date'2018-09-02', 'SS04', 40);
+insert into kw_salelist_2022 values(100006, 'AA03',date'2018-09-02', 'SS04', 30);
+insert into kw_salelist_2022 values(100007, 'AA01',date'2018-09-02', 'SS03', 40);
+insert into kw_salelist_2022 values(100008, 'AA04',date'2018-09-02', 'SS04', 10);
+insert into kw_salelist_2022 values(100009, 'AA01',date'2018-09-02', 'SS03', 20);
+insert into kw_salelist_2022 values(100010, 'AA05',date'2018-09-02', 'SS03', 30);
+insert into kw_salelist_2022 values(100011, 'AA01',date'2018-09-02', 'SS01', 40);
+insert into kw_salelist_2022 values(100012, 'AA03',date'2018-09-02', 'SS02', 50);
+insert into kw_salelist_2022 values(100013, 'AA04',date'2018-09-02', 'SS02', 50);
+insert into kw_salelist_2022 values(100014, 'AA05',date'2018-09-02', 'SS04', 20);
+insert into kw_salelist_2022 values(100015, 'AA01',date'2018-09-02', 'SS03', 30);
