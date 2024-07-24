@@ -30,11 +30,11 @@
 		while (rs.next()) {
 			out.print("<tr>");
 			out.print("<td>" + rs.getString(1) + "</td>");
-			out.print("<td>" + rs.getString(2) + "</td>");
+			out.print("<td style='text-align: left'>" + rs.getString(2) + "</td>");
 			out.print("<td>" + rs.getString(3) + "</td>");
-			out.print("<td>" + rs.getString(4) + "</td>");
+			out.print("<td style='text-align: left'>" + rs.getString(4) + "</td>");
 			out.print("<td>" + rs.getString(5) + "</td>");
-			out.print("<td>" + rs.getString(6) + "</td>");
+			out.print("<td style='text-align: left'>" + rs.getString(6) + "</td>");
 			out.print("<td>" + rs.getString(7) + "원</td>");
 			out.print("</tr>");
 		}
