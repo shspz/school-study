@@ -27,9 +27,9 @@
 					    " when '30' then '강원' " +
 					    " when '40' then '대구' " +
 					    " end 지역명, " +
-					    " count(ar.t_code)/5 " +
+					    " count(ar.t_code) " +
 					" from ai_lab_test al, ai_patient ap, ai_result ar " +
-					" where ar.p_no = ap.p_no " +
+					" where ar.p_no = ap.p_no and ar.t_code = al.t_code " +
 					" group by ap.p_city " +
 					" order by ap.p_city";
 		ResultSet rs = stmt.executeQuery(sql);
