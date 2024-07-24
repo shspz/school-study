@@ -25,7 +25,7 @@ try{
 	("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
 	Statement stmt = con.createStatement();
 	String sql = "select ap.pcode, ap.name, sum(ap.cost*asa.amount) re "+
-				 " from tbl_product_2023 ap, tbl_shop_2023 ash, tbl_salelist_2023 asa "+
+				 " from kw_product_2022 ap, kw_shop_2022 ash, kw_salelist_2022 asa "+
 				 " where asa.pcode = ap.pcode and asa.scode = ash.scode "+
 				 " group by ap.pcode, ap.name "+
 				 " order by ap.pcode";
