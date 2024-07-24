@@ -21,10 +21,11 @@
 		Class.forName("oracle.jdbc.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "system", "1234");
 		Statement stmt = con.createStatement();
-		String sql = "select ap.p_no, ap.p_name, al.t_name, ar.t_sdate, " +
+		String sql = "select ap.p_no, ap.p_name, al.t_name, "+
+		            " to_char(ar.t_sdate,'YYYY-MM-DD'), " +
 					" case ar.t_status when '1' then '검사 중' " +
     				" else  '검사 완료' end, " +
-					" ar.t_ldate, " +
+					" to_char(ar.t_ldate, 'YYYY-MM-DD'), " +
 					" case ar.t_result when 'X' then '미입력' " +
    					" when 'P' then '양성' " +
    					" when 'N' then '음성' end " +
