@@ -8,3 +8,8 @@ p_tel2 char(4),
 p_tel3 char(4),
 p_city char(2),
 PRIMARY KEY (p_no));
+
+CREATE TABLE ai_lab_test(
+t_code char(4) not null,
+r_name varchar(20) ,
+PRIMARY KEY (t_code));
