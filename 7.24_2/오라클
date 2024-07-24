@@ -13,3 +13,12 @@ CREATE TABLE ai_lab_test(
 t_code char(4) not null,
 r_name varchar(20) ,
 PRIMARY KEY (t_code));
+
+CREATE TABLE ai_result(
+p_no char(4) not NULL,
+t_code char(4) not null,
+t_sdate date  not null,
+t_status char(4),
+t_ldate date,
+t_result char(4),
+PRIMARY KEY(p_no,t_code,t_sdate));
