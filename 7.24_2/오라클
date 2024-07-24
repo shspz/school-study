@@ -31,3 +31,8 @@ INSERT INTO ai_patient VALUES(1005,'황환자',19400301,'M',010,2222,0005,40);
 INSERT INTO ai_patient VALUES(1006,'양환자',19440301,'F',010,2222,0006,40);
 INSERT INTO ai_patient VALUES(1007,'허환자',19760301,'F',010,2222,0007,10);
 
+INSERT INTO ai_lab_test VALUES('T001','결핵');
+INSERT INTO ai_lab_test VALUES('T002','장티푸스');
+INSERT INTO ai_lab_test VALUES('T003','수두');
+INSERT INTO ai_lab_test VALUES('T004','홍역');
+INSERT INTO ai_lab_test VALUES('T005','콜레라');
