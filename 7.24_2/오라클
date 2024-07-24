@@ -11,7 +11,7 @@ PRIMARY KEY (p_no));
 
 CREATE TABLE ai_lab_test(
 t_code char(4) not null,
-r_name varchar(20) ,
+t_name varchar(20) ,
 PRIMARY KEY (t_code));
 
 CREATE TABLE ai_result(
@@ -23,13 +23,13 @@ t_ldate date,
 t_result char(4),
 PRIMARY KEY(p_no,t_code,t_sdate));
 
-INSERT INTO ai_patient VALUES(1001,'김환자',19850301,'M',010,2222,0001,10);
-INSERT INTO ai_patient VALUES(1002,'이환자',19900301,'M',010,2222,0002,20);
-INSERT INTO ai_patient VALUES(1003,'박환자',19770301,'F',010,2222,0003,30);
-INSERT INTO ai_patient VALUES(1004,'조환자',19650301,'F',010,2222,0004,10);
-INSERT INTO ai_patient VALUES(1005,'황환자',19400301,'M',010,2222,0005,40);
-INSERT INTO ai_patient VALUES(1006,'양환자',19440301,'F',010,2222,0006,40);
-INSERT INTO ai_patient VALUES(1007,'허환자',19760301,'F',010,2222,0007,10);
+INSERT INTO ai_patient VALUES(1001,'김환자',19850301,'M','010','2222','0001',10);
+INSERT INTO ai_patient VALUES(1002,'이환자',19900301,'M','010','2222','0002',20);
+INSERT INTO ai_patient VALUES(1003,'박환자',19770301,'F','010','2222','0003',30);
+INSERT INTO ai_patient VALUES(1004,'조환자',19650301,'F','010','2222','0004',10);
+INSERT INTO ai_patient VALUES(1005,'황환자',19400301,'M','010','2222','0005',40);
+INSERT INTO ai_patient VALUES(1006,'양환자',19440301,'F','010','2222','0006',40);
+INSERT INTO ai_patient VALUES(1007,'허환자',19760301,'F','010','2222','0007',10);
 
 INSERT INTO ai_lab_test VALUES('T001','결핵');
 INSERT INTO ai_lab_test VALUES('T002','장티푸스');
