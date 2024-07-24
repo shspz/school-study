@@ -21,19 +21,23 @@
 		Class.forName("oracle.jdbc.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "system", "1234");
 		Statement stmt = con.createStatement();
-		String sql = " SELECT ap.p_no, ap.p_name, ap.p_birth, "+
-				" CASE ap.p_gender "+
-		        " WHEN 'M' THEN '남자' "+
-		        " WHEN 'F' THEN '여자' "+
-		        " END, "+
-		       " ap.p_tel1 || '-' || ap.p_tel2 || '-' || ap.p_tel3 AS p_tel, "+
-		       " CASE ap.p_city "+
-		           " WHEN '10' THEN '서울' "+
-		          "  WHEN '20' THEN '경기' "+
-		          "  WHEN '30' THEN '강원' "+
-		           " WHEN '40' THEN '대구' "+
-		       " END "+
-		" FROM ai_patient ap " ; 
+		String sql = " SELECT ap.p_no, " + 
+				" ap.p_name, " +
+			       " SUBSTR(ap.p_birth, 1, 4) || '년' || SUBSTR(ap.p_birth, 5, 2) || '월' || SUBSTR(ap.p_birth, 7, 2) || '일' , " +
+			       " CASE ap.p_gender " +
+			          "  WHEN 'M' THEN '남자' " +
+			           " WHEN 'F' THEN '여자' " +
+			           " ELSE '기타' " +
+			      "  END AS p_gender, " +
+			       " ap.p_tel1 || '-' || ap.p_tel2 || '-' || ap.p_tel3, " +
+			       " CASE ap.p_city " +
+			          "  WHEN '10' THEN '서울' " +
+			          "  WHEN '20' THEN '경기' " +
+			           " WHEN '30' THEN '강원' " +
+			           " WHEN '40' THEN '대구' " +
+			           " ELSE '기타' " +
+			      "  END  " +
+			" FROM ai_patient ap " ;
 		ResultSet rs = stmt.executeQuery(sql);
 		while (rs.next()) {
 			out.print("<tr>");
