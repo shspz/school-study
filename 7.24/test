@@ -1,49 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>판매관리</title>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <section>
 <h2>판매관리</h2>
-<table border = 1>
+<table border="1">
 <tr>
-<th>비번호</th><th>상품코드</th><th>판매날짜</th><th>매장코드</th><th>상품명</th><th>판매수량</th><th>총판매량</th>
+    <th>비번호</th>
+    <th>상품코드</th>
+    <th>판매날짜</th>
+    <th>매장코드</th>
+    <th>상품명</th>
+    <th>판매수량</th>
+    <th>총판매량</th>
 </tr>
-	<%
-	try {
-		Class.forName("oracle.jdbc.OracleDriver");
-		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "system", "1234");
-		Statement stmt = con.createStatement();
-		String sql = " select sa.saleno,sa.pcode, "+ 
-			    " to_char(sa.saledate,'YYYY-MM-DD'),sa.scode, pr.name, sa.amount, "+
-			    " to_char(pr.cost * sa.amount,'999,999,999') "+
-			" from kw_salelist_2022 sa, kw_product_2022 pr "+
-			" where sa.pcode = pr.pcode ";
-		ResultSet rs = stmt.executeQuery(sql);
-		while (rs.next()) {
-			out.print("<tr>");
-			out.print("<td>" + rs.getString(1) + "</td>");
-			out.print("<td style='text-align: left'>" + rs.getString(2) + "</td>");
-			out.print("<td>" + rs.getString(3) + "</td>");
-			out.print("<td style='text-align: left'>" + rs.getString(4) + "</td>");
-			out.print("<td>" + rs.getString(5) + "</td>");
-			out.print("<td style='text-align: left'>" + rs.getString(6) + "</td>");
-			out.print("<td>" + rs.getString(7) + "원</td>");
-			out.print("</tr>");
-		}
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-	%>
+<%
+    Connection con = null;
+    Statement stmt = null;
+    ResultSet rs = null;
+    try {
+        Class.forName("oracle.jdbc.OracleDriver");
+        con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "system", "1234");
+        stmt = con.createStatement();
+        String sql = "SELECT sa.saleno, sa.pcode, " +
+                     "TO_CHAR(sa.saledate, 'YYYY-MM-DD') AS saledate, sa.scode, pr.name, sa.amount, " +
+                     "TO_CHAR(pr.cost * sa.amount, '999,999,999') AS total_sale " +
+                     "FROM kw_salelist_2022 sa, kw_product_2022 pr " +
+                     "WHERE sa.pcode = pr.pcode";
+        rs = stmt.executeQuery(sql);
+        while (rs.next()) {
+            out.print("<tr>");
+            out.print("<td>" + rs.getString("saleno") + "</td>");
+            out.print("<td style='text-align: left'>" + rs.getString("pcode") + "</td>");
+            out.print("<td>" + rs.getString("saledate") + "</td>");
+            out.print("<td style='text-align: left'>" + rs.getString("scode") + "</td>");
+            out.print("<td>" + rs.getString("name") + "</td>");
+            out.print("<td style='text-align: left'>" + rs.getString("amount") + "</td>");
+            out.print("<td>" + rs.getString("total_sale") + "원</td>");
+            out.print("</tr>");
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (stmt != null) stmt.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+%>
 </table>
 </section>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
