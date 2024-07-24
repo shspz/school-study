@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>결과 처리</title>
+</head>
+<body>
+<%
+    String p_no = request.getParameter("p_no");
+    String t_code = request.getParameter("p_name");
+    String t_sdate = request.getParameter("p_d");
+    String t_status = request.getParameter("p_check");
+    String t_ldate = request.getParameter("p_ld");
+    String t_result = request.getParameter("p_ck");
+
+    String jdbcURL = "jdbc:oracle:thin:@//localhost:1521/xe";
+    String jdbcUser = "system";
+    String jdbcPassword = "1234";
+    String sql = "INSERT INTO ai_result (p_no, t_code, t_sdate, t_status, t_ldate, t_result) VALUES (?, ?, TO_DATE(?, 'YYYYMMDD'), ?, TO_DATE(?, 'YYYYMMDD'), ?)";
+
+    try (Connection con = DriverManager.getConnection(jdbcURL, jdbcUser, jdbcPassword);
+         PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+        pstmt.setString(1, p_no);
+        pstmt.setString(2, t_code);
+        pstmt.setString(3, t_sdate);
+        pstmt.setString(4, t_status);
+        pstmt.setString(5, t_ldate);
+        pstmt.setString(6, t_result);
+
+        pstmt.executeUpdate();
+        response.sendRedirect("index.jsp");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+%>
+</body>
+</html>
