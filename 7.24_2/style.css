@@ -17,6 +17,8 @@ header {
 }
 
 nav {
+	display : flex;
+	justify-content: center;
 	position: fixed;
 	top: 50px;
 	background-color: lightblue;
@@ -43,6 +45,6 @@ footer {
 	font-size: 15px;
 }
 
-h2, td {
+h2, td, p{
 	text-align: center;
 }
