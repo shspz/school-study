@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import = 'java.sql.*' %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function sss(){
+	if(document.frm.pcode.value==""){
+		alert("판매코드가 입력되지 않았습니다.");
+		frm.pcode.focus();
+		return false;
+	}
+	return true;
+	}
+</script>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2>판매코드 조회하기</h2>
+<form name = 'frm' action = 'action2.jsp'>
+<table border = 1>
+<tr><td>판매코드</td>
+	<td><input type = 'text' name = 'pcode'></td></tr>
+<tr><td colspan = 2>
+	<input type = 'submit' value = '판매코드조회' onclick = 'return sss();'>
+	<input type = 'button' value = '홈으로' onclick = "location.href='index.jsp'">
+	</td></tr>
+</table>
+</form>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
