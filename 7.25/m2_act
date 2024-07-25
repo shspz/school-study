@@ -1,0 +1,51 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>결과 처리</title>
+</head>
+<body>
+<%
+    // 폼에서 전송된 데이터 받기
+    String saleno = request.getParameter("saleno");
+    String pcode = request.getParameter("pcode");
+    String saledate = request.getParameter("saledate");
+    String scode = request.getParameter("scode");
+    String amount = request.getParameter("amount");
+
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+
+    try {
+        Class.forName("oracle.jdbc.OracleDriver");
+        conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "system", "1234");
+
+        String sql = "INSERT INTO kw3_salelist (saleno, pcode, saledate, scode, amount) VALUES (?, ?, TO_DATE(?, 'YYYYMMDD'), ?, ?)";
+
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, saleno);
+        pstmt.setString(2, pcode);
+        pstmt.setString(3, saledate);
+        pstmt.setString(4, scode);
+        pstmt.setString(5, amount);
+
+        int result = pstmt.executeUpdate();
+
+        if (result > 0) {
+            out.println("<script>alert('정상적으로 등록되었습니다.'); location.href='m2_table.jsp';</script>");
+        } else {
+            out.println("<script>alert('등록에 실패했습니다.'); location.href='index.jsp';</script>");
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        out.println("<script>alert('오류가 발생했습니다: " + e.getMessage() + "'); location.href='index.jsp';</script>");
+    } finally {
+        if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+        if (conn != null) try { conn.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+    }
+%>
+</body>
+</html>
