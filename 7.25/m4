@@ -11,7 +11,7 @@
 		
 		<script type="text/javascript">
 			function aaa() {
-				if(document.frm.csaleno.value == ""){
+				if(document.frm.saleno.value == ""){
 					alert("판매번호가 입력되지 않았습니다.");
 					return false;
 				}
