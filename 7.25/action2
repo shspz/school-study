@@ -1,1 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>판매코드 조회 결과</title>
+    
+    <link href="style.css" rel="stylesheet">
+    
+</head>
+<body>
+    <jsp:include page="header.jsp"></jsp:include>
+    <section style="text-align: center;">
+        <h2>판매코드 조회 결과</h2>
+        <%
+            // 폼에서 전송된 데이터 받기
+            String pcode = request.getParameter("pcode");
 
+            Connection conn = null;
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
+
+            try {
+                Class.forName("oracle.jdbc.OracleDriver");
+                
+                conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "system", "1234");
+                
+                String sql = "SELECT saleno, pcode, TO_CHAR(saledate, 'YYYY-MM-DD') saledate, scode, amount FROM kw3_salelist WHERE pcode = ?";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, pcode);
+                rs = pstmt.executeQuery();
+                
+                if (rs.next()) {
+                    out.println("<h2>판매코드: " + pcode + "의 조회 결과</h2>");
+                    out.println("<table border='1' style='margin: 0 auto;'>");
+                    out.println("<tr><th>판매번호</th><th>상품코드</th><th>판매날짜</th><th>매장코드</th><th>판매수량</th></tr>");
+                    do {
+                        out.println("<tr>");
+                        out.println("<td>" + rs.getString("saleno") + "</td>");
+                        out.println("<td>" + rs.getString("pcode") + "</td>");
+                        out.println("<td>" + rs.getString("saledate") + "</td>");
+                        out.println("<td>" + rs.getString("scode") + "</td>");
+                        out.println("<td>" + rs.getString("amount") + "</td>");
+                        out.println("</tr>");
+                    } while (rs.next());
+                    out.println("</table>");
+                } 
+                else {
+                    out.println("<h2>판매코드가 존재하지 않습니다.</h2>");
+                }
+            } 
+            catch (Exception e) {
+            	e.printStackTrace();
+            } 
+        %>
+        <input type="button" value="돌아가기" onclick="location.href='m5.jsp'" style="margin-top: 20px;">
+    </section>
+    <jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
