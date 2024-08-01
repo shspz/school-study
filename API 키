@@ -1,0 +1,3 @@
+# 한국어 기초 사전 API 정보
+API_KEY = "2D319D85D76F61B0923A0A127E2AAB4E"
+BASE_URL = "https://krdict.korean.go.kr/api/search"
