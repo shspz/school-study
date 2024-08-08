@@ -15,8 +15,8 @@ nav{position: fixed; top: 20px; background-color: lightgray; color: black; line-
 section{position: fixed; top: 80px; align: center; left: 10%;}
 
 a{text-decoration: none; color: white}
-input[type="button"]{background-color: steelblue; color: white;}
-
+input[type="submit"]{background-color: steelblue; color: white;}
+input[type="submit"]:hover {background-color: skyblue;}
 
 </style>
 
@@ -45,7 +45,7 @@ input[type="button"]{background-color: steelblue; color: white;}
 <td>내용</td>
 <td><textarea placeholder="내용을 입력하세요"></textarea></td>
 </tr>
-<tr><td colspan = 2><button type="submit">등록</button></td></tr>
+<tr><td colspan = 2><input type="submit" value="등록"></td></tr>
 </table>
 </section>
 
