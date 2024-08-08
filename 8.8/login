@@ -1,0 +1,62 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+body{margin: auto;}
+header{position: fixed; top: 0px; background-color: black; color: white; line-height: 20px; width: 100%; text-align: right; font-size: 10px;}
+nav{position: fixed; top: 20px; background-color: lightgray; color: black; line-height: 20px; width: 100%; text-align: center; }
+
+section{position: fixed; top: 80px; align: center; left: 10%;}
+
+a{text-decoration: none; color: white}
+input[type="submit"]{background-color: steelblue; color: white;}
+input[type="submit"]:hover {background-color: skyblue;}
+
+
+
+</style>
+</head>
+<body>
+<header>
+<a href="home.jsp">홈으로</a> &nbsp;&nbsp;
+<a href="join.jsp">회원가입</a> &nbsp;&nbsp;
+<a href="login.jsp">로그인</a> &nbsp;&nbsp;
+<a href="board.jsp">게시판</a> &nbsp;&nbsp;
+</header>
+
+<nav>
+<h2><b>로그인</b></h2>
+</nav>
+
+
+<section>
+<br>
+<h1>로그인</h1>
+<table>
+<tr>
+  <th>아이디</th>
+  <td style="color: lightgray;"><input type="text" value="아이디를 입력하세요."></td>
+  <th>비밀번호</th>
+  <td style="color: lightgray;"><input type="text" value="비밀번호를 입력하세요."></td>
+  <td align="center"><input type="submit" value="로그인"></td>
+</tr>
+  
+  
+
+</table>
+</section>
+
+
+
+
+
+
+
+
+</body>
+</html>
