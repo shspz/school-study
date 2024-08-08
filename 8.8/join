@@ -14,8 +14,8 @@ nav{position: fixed; top: 20px; background-color: lightgray; color: black; line-
 section{position: fixed; top: 80px; align: center; left: 10%;}
 
 a{text-decoration: none; color: white}
-input[type="button"]{background-color: steelblue; color: white;}
-
+input[type="submit"]{background-color: steelblue; color: white;}
+input[type="submit"]:hover {background-color: skyblue;}
 
 
 
@@ -74,7 +74,7 @@ input[type="button"]{background-color: steelblue; color: white;}
 
 <tr>
   <td></td>
-  <td align="center"><input type="button" value="확인"></td>
+  <td align="center"><input type="submit" value="확인"></td>
 </tr>
 </table>
 </section>
