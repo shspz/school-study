@@ -1,0 +1,90 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+body{margin: auto;}
+header{position: fixed; top: 0px; background-color: black; color: white; line-height: 20px; width: 100%; text-align: right; font-size: 10px;}
+nav{position: fixed; top: 20px; background-color: lightgray; color: black; line-height: 20px; width: 100%; text-align: center; }
+
+section{position: fixed; top: 80px; align: center; left: 10%;}
+
+a{text-decoration: none; color: white}
+input[type="button"]{background-color: steelblue; color: white;}
+
+
+
+
+</style>
+</head>
+<body>
+<header>
+<a href="home.jsp">홈으로</a> &nbsp;&nbsp;
+<a href="join.jsp">회원가입</a> &nbsp;&nbsp;
+<a href="login.jsp">로그인</a> &nbsp;&nbsp;
+<a href="board.jsp">게시판</a> &nbsp;&nbsp;
+</header>
+
+<nav>
+<h2><b>회원가입</b></h2>
+</nav>
+
+
+<section>
+<br>
+<h1>회원가입</h1>
+<table>
+<tr>
+  <td>아이디</td>
+  <td><input type="text"></td>
+</tr>
+
+<tr>
+  <td align="center">암호</td>
+  <td><input type="text"></td>
+</tr>
+
+<tr>
+  <td align="center">성별</td>
+  <td><input type="radio">남자
+  	  <input type="radio">여자</td>
+</tr>
+
+<tr>
+  <td align="left">관심사항</td>
+  <td><input type="checkbox"> 정치 <br>
+  <input type="checkbox"> 경제 <br>
+  <input type="checkbox"> 연애 <br> </td>
+</tr>
+
+<tr>
+  <td align="center">학력</td>
+  <td><select>
+          <option value="">학력을 선택하세요</option>
+          <option value="element">초등학교</option>
+          <option value="middle">중학교</option>
+          <option value="high">고등학교</option>
+          <option value="univ">대학교</option>
+       </select></td>
+</tr>
+
+<tr>
+  <td></td>
+  <td align="center"><input type="button" value="확인"></td>
+</tr>
+</table>
+</section>
+
+
+
+
+
+
+
+
+</body>
+</html>
