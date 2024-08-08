@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 등록 페이지</title>
+    
+<style>
+
+body{margin: auto;}
+header{position: fixed; top: 0px; background-color: black; color: white; line-height: 20px; width: 100%; text-align: right; font-size: 10px;}
+nav{position: fixed; top: 20px; background-color: lightgray; color: black; line-height: 20px; width: 100%; text-align: center; }
+
+section{position: fixed; top: 80px; align: center; left: 10%;}
+
+a{text-decoration: none; color: white}
+input[type="button"]{background-color: steelblue; color: white;}
+
+
+</style>
+
+</head>
+<body>
+</head>
+<body>
+<header>
+<a href="home.jsp">홈으로</a> &nbsp;&nbsp;
+<a href="join.jsp">회원가입</a> &nbsp;&nbsp;
+<a href="login.jsp">로그인</a> &nbsp;&nbsp;
+<a href="board.jsp">게시판</a> &nbsp;&nbsp;
+</header>
+
+<nav>
+<h2><b>게시판등록페이지</b></h2>
+</nav>
+
+<section>
+<table>
+<tr>
+<td>제목</td>
+<td><input type="text" id="title" placeholder="제목을 입력하세요"></td>
+</tr>
+<tr>
+<td>내용</td>
+<td><textarea placeholder="내용을 입력하세요"></textarea></td>
+</tr>
+<tr><td colspan = 2><button type="submit">등록</button></td></tr>
+</table>
+</section>
+
+</body>
+</html>
