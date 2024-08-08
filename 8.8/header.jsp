@@ -9,11 +9,10 @@
 </head>
 <body>
 <nav>
-&nbsp;&nbsp;
-<a href="index.jsp">HOME</a>&nbsp;&nbsp;
-<a href="join.jsp">회원가입</a>&nbsp;&nbsp;
-<a href="login.jsp">로그인</a>&nbsp;&nbsp;
-<a href="notice.jsp">게시판</a>&nbsp;&nbsp;
+<a href="index.jsp">HOME</a>
+<a href="join.jsp">회원가입</a>
+<a href="login.jsp">로그인</a>
+<a href="notice.jsp">게시판</a>
 </nav>
 </body>
 </html>
