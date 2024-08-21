@@ -1,0 +1,76 @@
+select tc.c_name,tin.t_date,TRIM(c_tel1) || '-' || TRIM(c_tel2) || '-' || TRIM(c_tel3),tp.p_name,
+case when tin.t_type = 'I' then '입고'
+        else '출고'
+end as t_type, case when tin.t_type = 'I' then tp.p_incost
+        else tp.p_outcost end as price
+from tbl_inout_202002 tin,tbl_company_202002 tc, tbl_product tp 
+where tin.c_code = tc.c_code and tp.p_code = tin.p_code
+order by p_name;
+
+
+
+
+
+
+
+
+
+
+
+---=================--------
+select p_code,p_name,p_size,p_incost,p_outcost
+from tbl_product;
+
+-------------product------------
+create table tbl_product(
+  p_code char(30) not null,
+  p_name varchar(20),
+  p_size number(4),
+  p_incost number(7),
+  p_outcost number(7),
+  PRIMARY KEY (p_code)
+);
+
+Insert into tbl_product values('B01','경량적색바퀴',150,3000,3600);
+Insert into tbl_product values('B02','중량적색바퀴',200,4000,4800);
+Insert into tbl_product values('B03','우레탄1.0인치',250,2500,3000);
+Insert into tbl_product values('B04','우레탄1.5인치',300,3000,3600);
+Insert into tbl_product values('B05','우레탄2.0인치',350,3500,4200);
+Insert into tbl_product values('B06','우레탄2.5인치',400,4000,4800);
+
+
+------------------------------company---------------
+create table tbl_company_202002(
+  c_code char(3) not null,
+  c_name varchar(20),
+  c_tel1 char(3),
+  c_tel2 char(4),
+  c_tel3 char(4),
+  PRIMARY KEY (c_code)
+);
+
+Insert into tbl_company_202002 values('10','서울공장','02','1488','1000');
+Insert into tbl_company_202002 values('20','울산공장','052','1488','2000');
+Insert into tbl_company_202002 values('30','부산상사','051','1488','3000');
+Insert into tbl_company_202002 values('40','광주상사','062','1488','4000');
+Insert into tbl_company_202002 values('50','대전상사','042','1488','5000');
+------------------------inout---------------------------
+create table tbl_inout_202002(
+  t_no char(8) not null,
+  p_code char(3) not null,
+  t_type char(1),
+  t_cnt number(4),
+  t_date date,
+  c_code char(3) not null,
+  
+  primary KEY (t_no)
+);
+
+Insert into tbl_inout_202002 VALUES('20200001','B01','I',100,'2020-1-1','10');
+Insert into tbl_inout_202002 VALUES('20200002','B02','I',100,'2020-1-1','10');
+Insert into tbl_inout_202002 VALUES('20200003','B03','I',200,'2020-1-1','20');
+Insert into tbl_inout_202002 VALUES('20200004','B04','I',300,'2020-1-1','20');
+Insert into tbl_inout_202002 VALUES('20200005','B05','I',400,'2020-1-1','20');
+Insert into tbl_inout_202002 VALUES('20200006','B06','O',20,'2020-1-1','30');
+Insert into tbl_inout_202002 VALUES('20200007','B07','O',25,'2020-1-1','40');
+
