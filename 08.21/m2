@@ -1,0 +1,96 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>입출고 등록하기</title>
+<script type="text/javascript">
+function aaa(){
+	if(document.frm.p_code.value.length==0){
+		alert("제품코드를 입력해주세요.");
+		document.frm.p_code.focus();
+		return false;
+	}
+	if (!document.querySelector('input[name=t_type]:checked')) {
+        alert("입출고여부를 선택하세요.");
+        return false;
+    }
+	if(document.frm.t_cnt.value.length==0){
+		alert("수량을 입력해주세요.");
+		document.frm.t_cnt.focus();
+		return false;
+	}
+	if(document.frm.t_date.value.length==0){
+		alert("입출고시간을 입력해주세요.");
+		document.frm.t_date.focus();
+		return false;
+	}
+	if(document.frm.c_code.value.length==0){
+		alert("회사코드를 선택해주세요.");
+		document.frm.c_code.focus();
+		return false;
+	}
+	alert("입출고정보가 정상적으로 등록되었습니다.");
+	return true;
+}
+function bbb(){
+	alert("정보를 지우고 처음부터 다시 입력합니다.");
+	return true;
+}
+</script>
+</head>
+<body>
+<%
+String t_no = "";
+try{
+	Class.forName("oracle.jdbc.OracleDriver");
+	Connection con = DriverManager.getConnection
+			("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
+	Statement stmt = con.createStatement();
+	String sql = " select max(t_no)+1 "+
+				 " from tbl_inout_202002 ";
+	ResultSet rs = stmt.executeQuery(sql);
+	if(rs.next()){
+		t_no = rs.getString(1);
+	}
+	stmt.close();
+	con.close();
+}catch(Exception ex){
+	ex.printStackTrace();
+}
+%>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<form name="frm" action="action.jsp" method="get">
+<h2>입출고 등록하기</h2>
+<table border=1>
+<tr><td>입출고번호</td>
+	<td><input type="text" name="t_no" value="<%= t_no %>" readonly></td></tr>
+<tr><td>제품코드</td>
+	<td><input type="text" name="p_code"></td></tr>
+<tr><td>입출고여부</td>
+	<td><input type="radio" name="t_type" value="I">입고
+		<input type="radio" name="t_type" value="O">출고</td></tr>
+<tr><td>수량</td>
+	<td><input type="number" name="t_cnt"></td></tr>
+<tr><td>입출고시간</td>
+	<td><input type="date" name="t_date"></td></tr>
+<tr><td>회사코드</td>
+	<td><select name="c_code">
+		<option value="">회사코드
+		<option value="10">[10]서울공장
+		<option value="20">[20]울산공장
+		<option value="30">[30]부산상사
+		<option value="40">[40]광주상사
+		<option value="50">[50]대전상사
+	</select></td></tr>
+<tr><td colspan=2><input type="submit" value="입출고등록" onclick="return aaa();">
+				  <input type="reset" value="다시쓰기" onclick="return bbb();"></td></tr>
+</table>
+</form>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
