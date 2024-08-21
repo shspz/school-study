@@ -1,0 +1,110 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function aaa(){
+	if(document.frm.saleno.value==""){
+		alert("tno가 입력되지 않았습니다.");
+		frm.saleno.focus();
+		return false;
+	}
+	if(document.frm.pcode.value==""){
+		alert("제품코드가 입력되지 않았습니다.");
+		frm.pcode.focus();
+		return false;
+	}
+	if(document.frm.sdate.value==""){
+		alert("판매날짜가 입력되지 않았습니다.");
+		frm.sdate.focus();
+		return false;
+	}
+	if(document.frm.scode.value==""){
+		alert("수량이 입력되지 않았습니다.");
+		frm.scode.focus();
+		return false;
+	}
+	if(document.frm.amount.value==""){
+		alert("입출금수량이 입력되지 않았습니다.");
+		frm.amount.focus();
+		return false;
+	}
+	if(document.frm.amount.value==""){
+		alert("회사코드가 입력되지 않았습니다.");
+		frm.qwer.focus();
+		return false;
+	}
+	if(document.frm.amount.value==""){
+	alert("입출고정보가 정상적으로 등록되었습니다");
+		frm.amount.focus();
+		return true;
+}
+function bbb(){
+	alert("정보를 지우고 처음부터 다시 입력합니다");
+	return true;
+}
+</script>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2><b>입출고 등록하기</b></h2>
+<form action="action.jsp" name="frm">
+<table border="1">
+
+<tr>
+  <td>tno</td>
+  <td><input type="number" name="saleno"></td>
+</tr>
+
+<tr>
+  <td>제품코드</td>
+  <td><input type="text" name="pcode"></td>
+</tr>
+
+<tr>
+  <td>입출고여부</td>
+  <td>
+		<input type="radio" name="scode" value="입고">입고
+		<input type="radio" name="scode" value="출고">출고
+  </td>
+</tr>
+
+<tr>
+  <td>수량</td>
+  <td><input type="text" name="scode"></td>
+</tr>
+
+<tr>
+  <td>입출고시간</td>
+  <td><input type="number" name="amount"></td>
+</tr>
+
+<tr>
+  <td>회사코드</td>
+  <td>
+ 	<select name="qwer">
+		<option value="">상품선택</option>
+		<option value="AA01">서울공장</option>
+		<option value="AA02">울산공장</option>
+		<option value="AA03">부산상사</option>
+		<option value="AA04">광주상사</option>
+		<option value="AA05">대전상사</option>
+	</select>
+	</td>
+</tr>
+
+<tr>
+  <td colspan=2 ><input type="submit" value="입출고등록" onclick="return aaa();">
+      <input type="reset" value="다시쓰기" onclick="return bbb();"></td>
+</tr>
+
+</table>
+</form>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
