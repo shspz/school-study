@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+request.setCharacterEncoding("UTF-8");
+String t_no=request.getParameter("t_no");
+String p_code=request.getParameter("p_code");
+String t_type=request.getParameter("t_type");
+String t_cnt=request.getParameter("t_cnt");
+String t_date=request.getParameter("t_date");;
+String c_code=request.getParameter("c_code");
+try{
+   Class.forName("oracle.jdbc.OracleDriver");
+   Connection con=DriverManager.getConnection
+           ("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
+   Statement stmt=con.createStatement();
+   String sql="insert into tbl_inout_202002 values( "+
+            " "+t_no+",'"+p_code+"','"+t_type+"', "+
+            " '"+t_cnt+"','"+t_date+"','"+c_code+"') ";
+           stmt.executeUpdate(sql);
+}
+catch(Exception e){
+   e.printStackTrace();
+}
+%>
+</body>
+</html>
