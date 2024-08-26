@@ -1,0 +1,102 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>성적등록</title>
+<script>
+function aaa(){
+	if(document.frm.a.value.length==0){
+		alert('학번이 입력되지 않았습니다.');
+		document.frm.a.focus();
+		return false;
+	}
+	if(document.frm.b.value.length==0){
+		alert('과목코드가 선택되지 않았습니다.');
+		document.frm.b.focus();
+		return false;
+	}
+	if(document.frm.c.value.length==0){
+		alert('중간고사 성적이 입력되지 않았습니다.');
+		document.frm.c.focus();
+		return false;
+	}
+	if(document.frm.d.value.length==0){
+		alert('기말고사 성적이 입력되지 않았습니다.');
+		document.frm.d.focus();
+		return false;
+	}
+	if(document.frm.e.value.length==0){
+		alert('출결 성적이 입력되지 않았습니다.');
+		document.frm.e.focus();
+		return false;
+	}
+	if(document.frm.f[0].checked==false &&
+        document.frm.f[1].checked==false &&
+		 document.frm.f[2].checked==false &&
+		  document.frm.f[3].checked==false &&
+		   document.frm.f[4].checked==false &&
+			document.frm.f[5].checked==false){
+		alert('레포트 등급을 선택하지 않았습니다.');
+		//document.frm.f.focus();
+		return false;
+	}
+	if(document.frm.g.value.length==0){
+		alert('기타 성적이 입력되지 않았습니다.');
+		document.frm.g.focus();
+		return false;
+	}
+	alert('성적이 성공적으로 등록되었습니다!');
+	return true;
+}
+function bbb(){
+	alert('정보를 지우고 처음부터 다시 입력합니다!');
+	return true;
+}
+</script>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2>성적 등록</h2>
+<form name='frm' action='m2_1.jsp' method='get'>
+<table border=1>
+<tr><td>학번</td>
+	<td><input type='number' name='a'></td></tr>
+<tr><td>과목코드</td>
+	<td><select name='b' style='width:100%'>
+		<option value=''>과목코드선택</option>
+		<option value='A001'>A001-자바</option>
+		<option value='A002'>A002-C언어</option>
+		<option value='A003'>A003-데이터베이스</option>
+		<option value='A004'>A004-웹프로그래밍</option>
+		<option value='A005'>A005-영어</option>
+	</select></td></tr>
+<tr><td>중간고사</td>
+	<td><input type='number' name='c'></td></tr>
+<tr><td>기말고사</td>
+	<td><input type='number' name='d'></td></tr>
+<tr><td>출결</td>
+	<td><input type='number' name='e'></td></tr>
+<tr><td>레포트</td>
+<!-- 	<td><input type='number' name='f'></td></tr> -->
+        <td><input type='radio' name='f' value=100>A
+            <input type='radio' name='f' value=90>B
+            <input type='radio' name='f' value=8>C<br>
+            <input type='radio' name='f' value=70>D
+            <input type='radio' name='f' value=60>E
+            <input type='radio' name='f' value=00>F<br>
+            
+        </td></tr>
+<tr><td>기타</td>
+	<td><input type='number' name='g'></td></tr>
+<tr><td colspan=2>
+	<input type='submit' value='등록' onclick='return aaa();'>
+	<input type='reset' value='취소' onclick='return bbb();'></td></tr>
+</table>
+</form>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
