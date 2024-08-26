@@ -1,0 +1,112 @@
+select tv2.vaccine_code, tv2.infectious_disease,
+tv2.vaccines, count(tv1.vaccinate_no)||'회'
+from tbl_vaccination tv1,tbl_vaccine tv2
+where tv1.vaccine_code=tv2.vaccine_code and vaccinate_result ='N'
+group by tv1.vaccine_code, tv2.vaccine_code, tv2.infectious_disease, tv2.vaccines
+order by tv2.vaccine_code;
+
+
+drop table tbl_vaccination;
+
+
+
+
+
+create table tbl_people(
+people_id char(4) not null,
+people_name varchar2(20),
+people_jumin char(13),
+people_tel char(13),
+people_addr varchar2(30),
+primary key(people_id)
+);
+
+create table tbl_vaccination(
+vaccinate_no char(4) not null,
+people_id char(4),
+vaccine_code char(4),
+vaccinate_date char(6),
+vaccinate_round number(1),
+vaccinate_result char(1),
+visit_agency char(4),
+primary key(vaccinate_no)
+);
+
+
+create table tbl_vaccine(
+vaccine_code char(4) not null,
+infectious_disease varchar2(20),
+vaccines varchar2(10),
+vaccination_timing varchar2(50),
+vaccine_recommendation char(1),
+primary key(vaccine_code)
+);
+
+create table tbl_institutional(
+visit_agency char(4) not null,
+guname varchar2(20),
+institutional_name varchar2(20),
+institutional_tel char(11),
+primary key(visit_agency)
+);
+
+
+
+insert into tbl_people values('C001','김고객','6201011234567','010-0000-1111','서울시 종로구');
+insert into tbl_people values('C002','이고객','8001011234567','010-0000-2222','서울시 송파구');
+insert into tbl_people values('C003','박고객','5701011234567','010-0000-3333','서울시 광진구');
+insert into tbl_people values('C004','정고객','0001011234567','010-0000-4444','서울시 동대문구');
+insert into tbl_people values('C005','최고객','0101011234567','010-0000-5555','서울시 중구');
+insert into tbl_people values('C006','강고객','7901011234567','010-0000-6666','서울시 종로구');
+insert into tbl_people values('C007','백고객','9101011234567','010-0000-7777','서울시 서대문구');
+insert into tbl_people values('C008','조고객','7201011234567','010-0000-8888','서울시 노원구');
+insert into tbl_people values('C009','서고객','0201011234567','010-0000-9999','서울시 성북구');
+
+insert into tbl_vaccination values('A001','C001','V008','230701',1,'N','B023');
+insert into tbl_vaccination values('A002','C002','V004','230701',1,'N','B018');
+insert into tbl_vaccination values('A003','C002','V004','230801',2,'N','B018');
+insert into tbl_vaccination values('A004','C003','V003','230802',1,'N','B006');
+insert into tbl_vaccination values('A005','C004','V006','230802',1,'N','B011');
+insert into tbl_vaccination values('A006','C005','V004','230803',1,'N','B024');
+insert into tbl_vaccination values('A007','C001','V001','230803',1,'N','B023');
+insert into tbl_vaccination values('A008','C003','V008','230804',1,'N','B006');
+insert into tbl_vaccination values('A009','C006','V004','230805',1,'A','B023');
+insert into tbl_vaccination values('A010','C007','V009','230806',1,'N','B014');
+insert into tbl_vaccination values('A011','C008','V007','230807',1,'A','B009');
+insert into tbl_vaccination values('A012','C009','V001','230808',1,'N','B017');
+
+insert into tbl_vaccine values('V001','인플루엔자','Flu','위험군에 대해 매년 1회','2');
+insert into tbl_vaccine values('V002','파상풍','Tdap','1회 접종이후 매 10년 1회','1');
+insert into tbl_vaccine values('V003','페렴구균','PPSV23','위험군에 대해 1회 또는 2회','2');
+insert into tbl_vaccine values('V004','A형간염','HepA','2회','1');
+insert into tbl_vaccine values('V005','B형간염','HepB','위험군 3회','1');
+insert into tbl_vaccine values('V006','수두','Var','항체검사 후 2회','1');
+insert into tbl_vaccine values('V007','홍역','MMR','접종력이 없을 경우 1회 또는 2회','1');
+insert into tbl_vaccine values('V008','대상포진','HZV','1회','1');
+insert into tbl_vaccine values('V009','수막구균','MCV4','위험군에 대해 1회 또는 2회','2');
+
+insert into tbl_institutional values('B001','강남구','강남의원','02-000-0000');
+insert into tbl_institutional values('B002','강동구','강동의원','02-000-0001');
+insert into tbl_institutional values('B003','강동구','강동의원','02-000-0002');
+insert into tbl_institutional values('B004','강서구','강서의원','02-000-0003');
+insert into tbl_institutional values('B005','관악구','관악의원','02-000-0004');
+insert into tbl_institutional values('B006','광진구','광진의원','02-000-0005');
+insert into tbl_institutional values('B007','구로구','구로의원','02-000-0006');
+insert into tbl_institutional values('B008','금천구','금천의원','02-000-0007');
+insert into tbl_institutional values('B009','노원구','노원의원','02-000-0008');
+insert into tbl_institutional values('B010','도봉구','도봉의원','02-000-0009');
+insert into tbl_institutional values('B011','동대문구','동대문의원','02-000-0010');
+insert into tbl_institutional values('B012','동작구','동작의원','02-000-0011');
+insert into tbl_institutional values('B013','마포구','마포의원','02-000-0012');
+insert into tbl_institutional values('B014','서대문구','서태문의원','02-000-0013');
+insert into tbl_institutional values('B015','서초구','서초의원','02-000-0014');
+insert into tbl_institutional values('B016','성동구','성동의원','02-000-0015');
+insert into tbl_institutional values('B017','성북구','성북의원','02-000-0016');
+insert into tbl_institutional values('B018','송파구','송파의원','02-000-0017');
+insert into tbl_institutional values('B019','양천구','양천의원','02-000-0018');
+insert into tbl_institutional values('B020','영등포구','영등포의원','02-000-0019');
+insert into tbl_institutional values('B021','용산구','용산의원','02-000-0020');
+insert into tbl_institutional values('B022','은평구','은평의원','02-000-0021');
+insert into tbl_institutional values('B023','종로구','종로의원','02-000-0022');
+insert into tbl_institutional values('B024','중구','중의원','02-000-0023');
+insert into tbl_institutional values('B025','중랑구','중랑의원','02-000-0024');
