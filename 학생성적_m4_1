@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+String dt1=request.getParameter("a");
+try{
+	Class.forName("oracle.jdbc.OracleDriver");
+	Connection con=DriverManager.getConnection
+			("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
+	Statement stmt=con.createStatement();
+	String sql= " SELECT count(*) as cnt from TBL_SUBJECT_202309 where subcode = '"+ dt1 +"' ";
+	ResultSet rs=stmt.executeQuery(sql);
+	rs.next();
+		int cnt1=rs.getInt("cnt");
+		if(cnt1>=1){
+			response.sendRedirect("m4_2.jsp?subcode="+dt1);
+		}
+		else{
+			response.sendRedirect("error.jsp");
+		}
+}catch(Exception ex){
+	ex.printStackTrace();
+}
+%>
+</body>
+</html>
