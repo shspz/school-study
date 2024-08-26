@@ -1,0 +1,77 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>과목별성적조회</title>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<%
+String a=request.getParameter("subcode");
+%>
+<h2>과목별 성적 조회</h2>
+<table border=1 style="text-align:center;">
+<tr><th>학번</th><th>이름</th><th>학과명</th><th>과목명</th><th>중간고사</th><th>기말고사</th><th>출결</th><th>레포트</th><th>기타</th><th>총합</th><th>등급</th></tr>
+<%
+try{
+	Class.forName("oracle.jdbc.OracleDriver");
+	Connection con=DriverManager.getConnection
+			("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
+	Statement stmt=con.createStatement();
+	String sql = " SELECT stu.sid as dt1, stu.sname as dt2, stu.dept_name as dt3, " +
+       	 " sub.subname as dt4, sco.midscore as dt5, sco.finalscore as dt6, " +
+       	 " sco.attend as dt7, sco.report as dt8, sco.etc as dt9, " +
+       	 " (sco.midscore*0.3 + sco.finalscore*0.3 + sco.attend*0.1 + sco.report*0.2 + sco.etc*0.1) as dt10 " +
+       	 " FROM TBL_STUDENT_202309 stu, TBL_SUBJECT_202309 sub, TBL_SCORE_202309 sco " +
+       	 " WHERE stu.sid = sco.stuid AND sub.subcode = sco.subcode AND sub.subcode = '"+ a +"' ";
+	ResultSet rs = stmt.executeQuery(sql);
+	while(rs.next()){
+		int score = rs.getInt("dt10");
+	   String grade;
+	
+	   if (score >= 95) {
+	       grade = "A+";
+	   } else if (score >= 90) {
+	       grade = "A";
+	   } else if (score >= 85) {
+	       grade = "B+";
+	   } else if (score >= 80) {
+	       grade = "B";
+	   } else if (score >= 75) {
+	       grade = "C+";
+	   } else if (score >= 70) {
+	       grade = "C";
+	   } else {
+	       grade = "F";
+	   }
+	   
+		out.print("<tr>");
+		out.print("<td>" + rs.getString("dt1") + "</td>");
+		out.print("<td>" + rs.getString("dt2") + "</td>");
+		out.print("<td>" + rs.getString("dt3") + "</td>");
+		out.print("<td>" + rs.getString("dt4") + "</td>");
+		out.print("<td>" + rs.getString("dt5") + "</td>");
+		out.print("<td>" + rs.getString("dt6") + "</td>");
+		out.print("<td>" + rs.getString("dt7") + "</td>");
+		out.print("<td>" + rs.getString("dt8") + "</td>");
+		out.print("<td>" + rs.getString("dt9") + "</td>");
+		out.print("<td>" + rs.getString("dt10") + "</td>");
+		out.print("<td>" + grade + "</td>");
+		out.print("</tr>");
+	}
+	stmt.close();
+	con.close();
+}catch(Exception e){
+	e.printStackTrace();
+} 
+%>
+</table>
+<h2><button onclick="location.href='m2.jsp'">돌아가기</button></h2>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
