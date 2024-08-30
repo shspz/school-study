@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function ccc(){
+	if(document.frm.aj.value=="");
+	alert("예약번호를 입력하지 않았습니다.");
+	frm.aj.focus();
+	return false;
+}
+
+
+
+
+
+
+</script>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2><b>접종예약조회</b></h2>
+<form action="action2.jsp" name="frm">
+<table border="1">
+<tr>
+  <th>예약번호를 입력하시오</th>
+  <td><input type="text" name="aj"></td>
+</tr>
+
+<tr>
+  <td colspan=2 style="text-align: center;"><input type="submit" value="예약조회" onclick="ccc();">
+  <input type="button" value="홈으로" onclick="ddd();"></td>
+</tr>
+
+
+
+
+</table>
+</form>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
