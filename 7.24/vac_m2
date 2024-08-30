@@ -1,1 +1,138 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function aaa(){
+	if(document.frm.resvno.value==""){
+		alert("접종 예약번호가 입력되지 않았습니다.");
+		frm.resvno.focus();
+		return false;
+	}
+	if(document.frm.jumin.value ==""){
+		alert("주민번호가 입력되지 않았습니다.");
+		frm.jumin.focus();
+		return false;
+	}
+	if(document.frm.vcode[0].checked==false &&
+			document.frm.vcode[1].checked==false &&
+			  document.frm.vcode[2].checked==false){
+		alert("백신코드가 입력되지 않았습니다.");	
+		return false;
+	}
+	if(document.frm.hospcode.value ==""){
+		alert("병원코드가 선택되지 않았습니다.");
+		frm.hospcode.focus();
+		return false;
+	}
+	if(document.frm.resvdate.value ==""){
+		alert("예약일자가 입력되지 않았습니다.");
+		frm.resvdate.focus();
+		return false;
+	}
+	if(document.frm.resvyime.value ==""){
+		alert("예약시간이 입력되지 않았습니다.");
+		frm.resvyime.focus();
+		return false;
+	}
+	alert("접종 예약 정보가 등록 되었습니다.");
+	return true;
+}
+function bbb(){
+	alert("정보를 지우고 처음부터 다시 입력합니다");
+	return true;
 
+}
+
+
+
+
+</script>
+</head>
+<body>
+<%
+request.setCharacterEncoding("UTF-8");
+Statement stmt=null;
+String resvno="";
+try{
+	Class.forName("oracle.jdbc.OracleDriver");
+	Connection con = DriverManager.getConnection
+		("jdbc:oracle:thin:@//localhost:1521/xe", "system", "1234");
+	stmt=con.createStatement();
+	String sql="select max(RESVNO)+1 resvno from VAC_VACCRESV_2022";
+	ResultSet rs=stmt.executeQuery(sql);
+	rs.next();
+	resvno=rs.getString("resvno");
+}
+catch(Exception e){
+	String error="error";
+	e.printStackTrace();
+}
+%>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2><b>백신접종예약</b></h2>
+<form action="action.jsp" name="frm">
+<table border="1">
+<tr>
+  <th>접종 예약번호</th>
+  <td><input type="number" name= "resvno" value = "<%=resvno %>" readonly="readonly">예) 2021001</td>
+</tr>
+
+<tr>
+  <th>주민번호</th>
+  <td><input type="number" name="jumin">예) 710101-1000001</td>
+</tr>
+
+<tr>
+  <th>백신코드</th>
+  <td style="text-align: center;"><input type="radio" name="vcode" value="1">A 백신
+  <input type="radio" name="vcode" value="2">B백신
+  <input type="radio" name="vcode" value="3">C백신</td>
+</tr>
+
+<tr>
+  <th>병원코드</th>
+  <td style="text-align: center;">
+    <select name="hospcode">
+    <option value="">병원선택</option>
+    <option value="H001">H001</option> 
+    <option value="H002">H002</option>    
+    <option value="H003">H003</option>      
+    
+    
+    
+    </select></td>
+</tr>
+
+<tr>
+  <th>예약일자</th>
+  <td><input type="number" name="resvdate">예) 2021001</td>
+</tr>
+
+<tr>
+  <th>예약시간</th>
+  <td><input type="number" name="resvyime">예) 12:30</td>
+</tr>
+
+<tr>
+  <td style="text-align: center;" colspan=2><input type="submit" value="등록" onclick="return aaa();">
+  <input type="reset" value="다시쓰기" onclick="return bbb();"></td>
+</tr>
+
+
+
+
+
+
+
+</table>
+</form>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
