@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>성적 확인</title>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2>성적 확인</h2>
+<table border="1">
+<tr>
+<td><b>학번</b></td>
+<td><b>이름</b></td>
+<td><b>주민번호</b></td>
+<td><b>학과명</b></td>
+<td><b>과목코드</b></td>
+<td><b>과목명</b></td>
+<td><b>중간고사</b></td>
+<td><b>기말고사</b></td>
+<td><b>출결</b></td>
+<td><b>레포트</b></td>
+<td><b>기타</b></td>
+<td><b>총합</b></td>
+<td><b>등급</b></td>
+</tr>
+<%
+	try{
+		Class.forName("oracle.jdbc.OracleDriver");
+		Connection con = DriverManager.getConnection
+				("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
+		Statement stmt = con.createStatement();
+		String sql = "SELECT st.sid, st.sname,st.jumin, st.dept_name, su.subcode, su.subname, sc.midscore, sc.finalscore, "+
+		        	 " sc.attend, sc.report, sc.etc, "+
+		        	 " to_char(midscore*0.3 + finalscore*0.3 + attend*0.1 + report*0.2 + etc*0.1, '999.0'), "+
+		        	 " case when midscore*0.3 + finalscore*0.3 + attend*0.1 + report*0.2 + etc*0.1 >= 95 then 'A+' "+
+		             " when midscore*0.3 + finalscore*0.3 + attend*0.1 + report*0.2 + etc*0.1 >= 90 then 'A' "+
+		             " when midscore*0.3 + finalscore*0.3 + attend*0.1 + report*0.2 + etc*0.1 >= 85 then 'B+' "+
+		             " when midscore*0.3 + finalscore*0.3 + attend*0.1 + report*0.2 + etc*0.1 >= 80 then 'B' "+
+		             " when midscore*0.3 + finalscore*0.3 + attend*0.1 + report*0.2 + etc*0.1 >= 75 then 'C+' "+
+		             " when midscore*0.3 + finalscore*0.3 + attend*0.1 + report*0.2 + etc*0.1 >= 70 then 'C' "+
+		             " when midscore*0.3 + finalscore*0.3 + attend*0.1 + report*0.2 + etc*0.1 >= 65 then 'D+' "+
+		             " when midscore*0.3 + finalscore*0.3 + attend*0.1 + report*0.2 + etc*0.1 >= 60 then 'D' "+
+		             " when midscore*0.3 + finalscore*0.3 + attend*0.1 + report*0.2 + etc*0.1 < 60 then 'E' "+
+		             " when midscore*0.3 + finalscore*0.3 + attend*0.1 + report*0.2 + etc*0.1 = 0 then 'F'end "+
+		            	" FROM tbl_student_202210 st, tbl_subject_202210 su, tbl_score_202210 sc "+
+		                	" WHERE st.sid=sc.stuid AND sc.subcode=su.subcode "+
+		                	" ORDER BY st.sid ASC";
+		ResultSet rs = stmt.executeQuery(sql);
+		while(rs.next()){
+			   out.println("<tr>");
+			   out.println("<td>"+rs.getString(1)+"</td>");
+			   out.println("<td>"+rs.getString(2)+"</td>");
+			   out.println("<td>0"+rs.getString(3)+"</td>");
+			   out.println("<td>"+rs.getString(4)+"</td>");
+			   out.println("<td>"+rs.getString(5)+"</td>");
+			   out.println("<td>"+rs.getString(6)+"</td>");
+			   out.println("<td>"+rs.getString(7)+"</td>");
+			   out.println("<td>"+rs.getString(8)+"</td>");
+			   out.println("<td>0"+rs.getString(9)+"</td>");
+			   out.println("<td>"+rs.getString(10)+"</td>");
+			   out.println("<td>"+rs.getString(11)+"</td>");
+			   out.println("<td>"+rs.getString(12)+"</td>");
+			   out.println("<td>"+rs.getString(13)+"</td>");
+			   out.println("</tr>");
+		}
+	}
+	catch(Exception e){
+		e.printStackTrace();
+	}
+%>
+</table>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
