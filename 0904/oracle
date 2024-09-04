@@ -1,0 +1,65 @@
+CREATE TABLE ai09_goods(
+goods_cd NUMBER(6) not NULL PRIMARY key,
+goods_nm VARCHAR2(30),
+goods_price NUMBER(8),
+cost NUMBER(8),
+in_date date);
+
+CREATE TABLE ai09_store(
+store_cd VARCHAR2(5) not NULL PRIMARY KEY,
+store_nm VARCHAR2(20),
+store_fg VARCHAR2(1)
+);
+
+
+CREATE TABLE ai09_sale(
+sale_no VARCHAR2(4) not NULL PRIMARY key,
+sale_ymd date not null,
+sale_fg VARCHAR2(1) not NULL,
+store_cd VARCHAR2(5),
+goods_cd NUMBER(6),
+sale_cnt NUMBER(3),
+pay_type VARCHAR2(2),
+FOREIGN key(store_cd) REFERENCES ai09_store(store_cd),
+FOREIGN key(goods_cd) REFERENCES ai09_goods(goods_cd)
+);
+
+INSERT INTO ai09_goods VALUES(110001,'라면',1050,750,'20220302');
+INSERT INTO ai09_goods VALUES(110002,'빵',1300,800,'20220302');
+INSERT INTO ai09_goods VALUES(110003,'과자',2000,1700,'20220302');
+INSERT INTO ai09_goods VALUES(110004,'탄산음료',900,750,'20220302');
+INSERT INTO ai09_goods VALUES(110005,'삼각김밥',750,300,'20220302');
+INSERT INTO ai09_goods VALUES(110006,'초콜릿',1500,1300,'20220302');
+INSERT INTO ai09_goods VALUES(110007,'우유',850,600,'20220302');
+
+INSERT INTO ai09_store VALUES('A001','이태원점','0');
+INSERT INTO ai09_store VALUES('A002','한남점','0');
+INSERT INTO ai09_store VALUES('A003','도원점','0');
+INSERT INTO ai09_store VALUES('B001','혜화점','1');
+INSERT INTO ai09_store VALUES('C001','방배점','1');
+INSERT INTO ai09_store VALUES('D001','사당점','0');
+INSERT INTO ai09_store VALUES('D002','흑석점','1');
+INSERT INTO ai09_store VALUES('E001','금호점','0');
+
+INSERT INTO ai09_sale VALUES('0001','20220325','1','A001',110001,2,'02');
+INSERT INTO ai09_sale VALUES('0002','20220325','1','B001',110003,2,'02');
+INSERT INTO ai09_sale VALUES('0003','20220325','1','D001',110003,1,'01');
+INSERT INTO ai09_sale VALUES('0004','20220325','1','A001',110006,5,'02');
+INSERT INTO ai09_sale VALUES('0005','20220325','1','C001',110003,2,'02');
+INSERT INTO ai09_sale VALUES('0006','20220325','2','C001',110003,2,'02');
+INSERT INTO ai09_sale VALUES('0007','20220325','1','A002',110005,4,'02');
+INSERT INTO ai09_sale VALUES('0008','20220325','1','A003',110004,4,'02');
+INSERT INTO ai09_sale VALUES('0009','20220325','1','B001',110001,2,'01');
+INSERT INTO ai09_sale VALUES('0010','20220325','1','A002',110006,1,'02');
+
+SELECT GOODS_CD, GOODS_NM, GOODS_PRICE, COST, IN_DATE   FROM ai09_goods;
+
+
+
+SELECT st.STORE_NM,
+                sum(case sa.PAY_TYPE
+                WHEN '01' THEN sa.SALE_CNT * go.GOODS_PRICE
+                else 0 end) po,
+sum(case sa.PAY_TYPE WHEN '02' THEN sa.SALE_CNT * go.GOODS_PRICE else 0 end) co,
+sum(sa.SALE_CNT * go.GOODS_PRICE)rr
+FROM ai09_store st, ai09_sale sa, ai09_goods go WHERE sa.goods_cd = go.goods_cd and st.store_cd = sa.store_cd ORDER by rr desc;
