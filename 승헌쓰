@@ -1,0 +1,108 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2>매출현황</h2>
+<table border="1">
+	<tr>
+		<td>점포명</td><td>현금매출</td><td>카드매출</td><td>총매출</td>
+	</tr>
+<%
+	try{
+		Class.forName("oracle.jdbc.OracleDriver");
+		Connection con = DriverManager.getConnection
+			("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
+		Statement stmt = con.createStatement();
+		String sql = "SELECT tst.store_nm, "+
+				"sum(case tsa.pay_type WHEN '01'  THEN tsa.sale_cnt * tg.goods_price else 0 end) po, "+
+				"sum(case tsa.pay_type WHEN '02'  THEN tsa.sale_cnt * tg.goods_price else 0 end) co, "+
+				"sum(tsa.sale_cnt * tg.goods_price) rr, "+
+				"tst.store_cd "+
+				"FROM ai09_sale tsa, ai09_store tst, ai09_goods tg "+
+				"WHERE tsa.store_cd = tst.store_cd and tsa.goods_cd = tg.goods_cd  "+
+				"GROUP by tst.store_nm, tst.store_cd "+
+				"order by rr desc";
+		ResultSet rs = stmt.executeQuery(sql);
+		while(rs.next()){
+			out.print("<tr>");
+			out.print("<td><a href='m3_1.jsp?scd="+rs.getString(5)+"'>"+rs.getString(1)+"</a></td>");
+			out.print("<td>" + rs.getString(2) + "</td>");
+			out.print("<td>" + rs.getString(3) + "</td>");
+			out.print("<td>" + rs.getString(4) + "</td>");
+			out.print("</tr>");
+		}
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+
+%>
+</table>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
+------------------------------------------------------------------------------------------------
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
+<h2>매출현황</h2>
+<table border="1">
+	<tr>
+		<td>판매구분</td><td>판매번호</td><td>판매일자</td><td>상품명</td><td>판매수량</td><td>판매금액</td><td>수취구분</td>
+	</tr>
+<%
+	String store_cd = request.getParameter("scd");
+	try{
+		Class.forName("oracle.jdbc.OracleDriver");
+		Connection con = DriverManager.getConnection
+			("jdbc:oracle:thin:@//localhost:1521/xe","system","1234");
+		Statement stmt = con.createStatement();
+		String sql = "SELECT CASE tsa.sale_fg WHEN '1' THEN '판매' "+
+                	 "WHEN '2' then '판매취소' end, "+
+                     "tsa.sale_no, tsa.sale_ymd,tg.goods_nm, tsa.sale_cnt, "+
+                     "sum(tsa.sale_cnt * tg.goods_price), "+
+                     "CASE tsa.pay_type WHEN '01' THEN '현금' "+
+                     "WHEN '02' then '카드' end      "+
+            	     "FROM ai09_sale tsa, ai09_store tst, ai09_goods tg "+
+                     "WHERE tsa.goods_cd = tg.goods_cd and tst.store_cd = tsa.store_cd and tsa.store_cd = '"+store_cd+"' "+
+                     "GROUP BY tsa.sale_no, tsa.sale_ymd,tg.goods_nm, tsa.sale_cnt,tsa.sale_fg,tsa.pay_type"; 
+		ResultSet rs = stmt.executeQuery(sql);
+		while(rs.next()){
+			out.print("<tr>");
+			out.print("<td>"+rs.getString(1)+"</td>");
+			out.print("<td>" + rs.getString(2) + "</td>");
+			out.print("<td>" + rs.getString(3) + "</td>");
+			out.print("<td>" + rs.getString(4) + "</td>");
+			out.print("<td>" + rs.getString(5) + "</td>");
+			out.print("<td>" + rs.getString(6) + "</td>");
+			out.print("<td>" + rs.getString(7) + "</td>");
+			out.print("</tr>");
+		}
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+
+%>
+</table>
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
