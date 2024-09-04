@@ -1,1 +1,15 @@
+@charset "UTF-8";
 
+header{position: fixed; top: 0px; background-color: blue; color: white; line-height: 50px;
+width: 100%; text-align: center; font-size: 30px;}
+
+nav{position: fixed; top: 50px; background-color: lightblue; width: 100%; line-height: 30px;}
+
+section{position: fixed; top: 80px; background-color: lightgray; width: 100%; height: 100%;}
+
+footer{position: fixed; bottom: 0px; background-color: blue; color: white; line-height: 30px; width: 100%;
+text-align: center;}
+
+
+table{margin: auto;}
+h2{text-align: center;}
