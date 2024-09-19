@@ -1,0 +1,157 @@
+@charset "UTF-8";
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    box-sizing: border-box;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: auto;
+}
+
+/* wrap */
+#wrap {
+    width: 1000px;
+    height: 650px;
+    display: flex;
+}
+
+/* #aside */
+#aside {
+    width: 200px;
+}
+
+/* aside logo*/
+#aside .logo {
+    width: 200px;
+    height: 100px;
+    background-color: #eee;
+}
+
+/* aside nav*/
+#aside .nav {
+    width: 200px;
+    height: 550px;
+    background-color: #ddd;
+}
+
+#aside .nav > ul{
+    padding: 20px;
+}
+#aside .nav > ul > li{}
+#aside .nav > ul > li > a{
+    display: block;
+    width: 160px;
+    border: 1px solid red;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: navy;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#aside .nav > ul > li > a:hover{
+    background-color: orange;
+    color: navy;
+}
+
+.subnav{
+    display: none;
+}
+.subnav li{}
+.subnav li a{
+    display: block;
+    width: 160px;
+    padding: 5px 10px;
+    margin: 0 auto;
+    border: 1px solid #333;
+    text-align: center;
+
+    background-color: rgb(43, 43, 116);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.subnav li a:hover{
+    background-color: orange;
+    color: navy;
+}
+
+/* main */
+#main {
+    width: 800px;
+    height: 650px;
+}
+
+/* slider */
+#slider {
+    width: 800px;
+    height: 350px;
+    background-color: #ccc;
+}
+
+/* contents */
+#contents {
+    width: 800px;
+    display: flex;
+}
+/* contents content1 */
+#contents .content1{
+    width: 33.3333%;
+    height: 200px;
+    background-color: #bbb;
+}
+/* contents content2 */
+#contents .content2{
+    width: 33.3333%;
+    height: 200px;
+    background-color: #aaa;
+}
+/* contents content3 */
+#contents .content3{
+    width: 33.3333%;
+    height: 200px;
+    background-color: #999;
+}
+
+/* footer */
+#footer {
+    width: 800px;
+    display: flex;
+}
+
+/* footer footer1 */
+#footer .footer1{
+    width: 200px;
+    height: 100px;
+    background-color: #888;
+}
+/* footer footer2 */
+#footer .footer2{
+    width: 600px;
+}
+#footer .footer2-1{
+    width: 600px;
+    height: 50px;
+    background-color: #777;
+}
+#footer .footer2-2{
+    width: 600px;
+    height: 50px;
+    background-color: #666;
+}
