@@ -1,0 +1,46 @@
+import pygame
+pygame.init()
+screen = pygame.display.set_mode((300,300))
+pygame.display.set_caption("게임")
+clock = pygame.time.Clock()
+pos_x = 100
+pos_y = 100
+aaa = True
+while aaa:
+    clock.tick(60)
+    screen.fill((255,255,255))
+    pygame.draw.circle(screen,(0,0,0),(pos_x,pos_y),10)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            aaa = False
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            pos_x -= 5
+        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
+            pos_x += 5
+        elif event.type == pygame.MOUSEMOTION:
+            print("마우스 이동 : (%d, %d)"%event.pos)
+            pos_x = event.pos[0]
+            pos_y = event.pos[1]
+        
+    # if event.type == pygame.KEYDOWN():
+    #     if event.key == pygame.K_LEFT:
+    #         pos_x = pos_x - 1
+    #     if event.key == pygame.K_RIGHT:
+    #         pos_x = pos_x + 1
+    #     if event.key == pygame.K_UP:
+    #         pos_y = pos_y - 1
+    #     if event.key == pygame.K_DOWN:
+    #         pos_y = pos_y + 1  
+    key_event = pygame.key.get_pressed()
+    if key_event[pygame.K_LEFT]:
+        pos_x = pos_x - 5
+    if key_event[pygame.K_RIGHT]:
+        pos_x = pos_x + 5
+    if key_event[pygame.K_UP]:
+        pos_y = pos_y - 5
+    if key_event[pygame.K_DOWN]:
+        pos_y = pos_y + 5
+    pygame.display.update()
+
+print('종료')
+pygame.quit()
