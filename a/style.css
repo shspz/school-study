@@ -1,0 +1,65 @@
+body {
+    margin: auto;
+}
+
+.ab {
+    background-color: black;
+    height: 60px;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.ab > nav > a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    line-height: 60px;
+}
+
+.log {
+    position: relative;
+    background-color: beige;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+.se1 {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+form {
+    text-align: center;
+    position: relative;
+}
+
+form h2 {
+    text-align: left;
+    margin-left: 25%;
+}
+
+table {
+    margin-left: 25%;
+}
+
+td {
+    text-align: center;
+}
+
+.butt {
+    background-color: rgb(50, 124, 235);
+    color: white;
+    border: none;
+    padding: 10px 20px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+}
